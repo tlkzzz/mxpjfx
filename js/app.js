@@ -7,6 +7,7 @@
 	/**
 	 * 用户登录
 	 **/
+	var url = 'http://localhost/a/';
 	owner.login = function(loginInfo, callback) {
 		callback = callback || $.noop;
 		loginInfo = loginInfo || {};

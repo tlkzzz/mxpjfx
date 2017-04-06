@@ -130,8 +130,8 @@
 				$.init({
 					statusBarBackground: '#f7f7f7'
 				});
-				$.plusReady(function() {
-			
+//				$.plusReady(function() {
+						$.ready(function() {
 						document.getElementById('login').addEventListener('tap', function() {
 							var user = doc.getElementById('user').value;
 							var pass = doc.getElementById('pass').value;
@@ -144,20 +144,24 @@
 //								return false;
 //							}
 
-			
-						  	$.openWindow({
-									  url:'main.html',
-		    						  id:'main',
-								})
-			
+//				 $.get('http://xpjfx.ngrok.cc/a/m/sys/user/infoData',function(data){
+//						console.log(data)
+//					},'json'
+//				);
+//						
+						//打开新页面
+						$.openWindow({
+						    url:'main.html',
+						    id:'main.html',
+						 });
 
-							
-//						$.post('/user/login',{user:user,pass:pass},function(result){
-//							
-//						},'json')
+
+
+
+});
 					
 			
-			});
+		
 						
 			
 					//返回退出
