@@ -9,12 +9,16 @@
       "fonts/mui.ttf"
     ],
     "refer": [
-      "main.html"
+      "main.html",
+      "mains.html",
+      "mainss.html"
     ]
   },
   "main.html": {
     "refer": [
-      "setting.html"
+      "setting.html",
+      "pull.html",
+      "pull_main.html"
     ],
     "resources": [
       "js/app.js",
@@ -22,7 +26,8 @@
       "fonts/mui.ttf",
       "css/mui.min.css",
       "css/style.css",
-      "pull_main.html"
+      "pull_main.html",
+      "pull.html"
     ]
   },
   "setting.html": {
@@ -36,7 +41,11 @@
       "css/feedback-page.css",
       "js/feedback-page.js",
       "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
-      "js/mui.view.js"
+      "js/mui.view.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "css/style.css"
     ],
     "refer": []
   },
@@ -60,5 +69,109 @@
       "css/style.css"
     ],
     "refer": []
+  },
+  "mains.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css"
+    ],
+    "refer": []
+  },
+  "mainss.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "pull_main.html"
+    ],
+    "refer": [
+      "pull_main.html",
+      "setting.html"
+    ]
+  },
+  "pull_main.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "js/vue.js"
+    ],
+    "refer": [
+      "ck/cxxsck_add.html",
+      "cxxsck_add.html",
+      "ck/mydd_main.html"
+    ]
+  },
+  "cxxsck_add.html": {
+    "resources": [
+      "/css/style.css",
+      "/js/mui.min.js",
+      "/css/mui.min.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css"
+    ]
+  },
+  "ck/cxxsck_add.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "images/cbd.jpg",
+      "images/yuantiao.jpg",
+      "images/logo.png",
+      "css/app.css",
+      "js/common.js"
+    ],
+    "refer": [
+      "ck/barcode_scan2.html"
+    ]
+  },
+  "ewm.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "ck/barcode_scan2.html": {
+    "resources": [
+      "css/common.css",
+      "js/common.js"
+    ]
+  },
+  "ck/mydd_main.html": {
+    "resources": [
+      "ck/mydd.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "ck/mydd.html"
+    ]
+  },
+  "ck/mydd.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "ck/mydd_xq.html"
+    ]
+  },
+  "ck/mydd_xq.html": {
+    "resources": [
+      "js/common.js",
+      "images/logo.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "ck/barcode_scan2.html"
+    ]
   }
 }

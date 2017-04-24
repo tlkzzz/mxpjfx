@@ -6,25 +6,3 @@ body {
 	padding: 0px;
 }
 .mui-content{height: 100%;}
-/*设置头部颜色*/
-.mui-bar-nav {
-	 background-color: #253FF2;
-}
-/*
- * 头部文字颜色
- */
-.mui-title {
-	    color: #fff;
-}
-/**
- * 设置图标颜色
- */
-.mui-bar .mui-btn-link{
-    color:#fff;
-}
-/**
- * 设置返回键颜色
- */
-.mui-bar-nav.mui-bar .mui-icon{
-color:#fff;	
-}

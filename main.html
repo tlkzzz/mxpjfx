@@ -8,15 +8,15 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 		<link href="css/mui.min.css" rel="stylesheet" />
-		<link href="css/style.css" rel="stylesheet" />
-	
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<header class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">主页</h1>
-			<a id='setting' class=" mui-pull-right mui-btn-link"><span class="mui-icon mui-icon-gear"></span></a>
+			<!--<a id='setting' class=" mui-pull-right mui-btn-link"><span class="mui-icon mui-icon-gear"></span></a>-->
 		</header>
+		
+		
 		<div class="mui-content"></div>
 	</body>
 	<script src="js/mui.min.js"></script>
@@ -37,23 +37,23 @@
 		});
 			mui.plusReady(function() {
 						//设置
-					var settingButton = document.getElementById('setting');
-					//settingButton.style.display = settings.autoLogin ? 'block' : 'none';
-					settingButton.addEventListener('tap', function(event) {
-						mui.openWindow({
-							id: 'setting',
-							url: 'setting.html',
-							show: {
-								aniShow: 'pop-in'
-							},
-							styles: {
-								popGesture: 'hide'
-							},
-							waiting: {
-								autoShow: false
-							}
-						});
-					});
+//					var settingButton = document.getElementById('setting');
+//					//settingButton.style.display = settings.autoLogin ? 'block' : 'none';
+//					settingButton.addEventListener('tap', function(event) {
+//						mui.openWindow({
+//							id: 'setting',
+//							url: 'setting.html',
+//							show: {
+//								aniShow: 'pop-in'
+//							},
+//							styles: {
+//								popGesture: 'hide'
+//							},
+//							waiting: {
+//								autoShow: false
+//							}
+//						});
+//					});
 					
 					
 					//后退返回

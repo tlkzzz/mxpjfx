@@ -130,7 +130,49 @@
 				$.init({
 					statusBarBackground: '#f7f7f7'
 				});
-//				$.plusReady(function() {
+				
+				if(mui.os.plus){
+								$.plusReady(function() {
+//						$.ready(function() {
+						document.getElementById('login').addEventListener('tap', function() {
+							var user = doc.getElementById('user').value;
+							var pass = doc.getElementById('pass').value;
+//							if(user.length==0 || user ==''){
+//								$.toast('请输入账号');
+//								return false;
+//							}
+//							if(pass.length==0 || pass==''){
+//								$.toast('请输入密码');
+//								return false;
+//							}
+
+//				 $.get('http://xpjfx.ngrok.cc/a/m/sys/user/infoData',function(data){
+//						console.log(data)
+//					},'json'
+//				);
+//						
+						//打开新页面
+						$.openWindow({
+						    url:'main.html',
+						    id:'main.html',
+						 });
+					});
+					//返回退出
+					var backButtonPress = 0;
+					$.back = function(event) {
+						backButtonPress++;
+						if (backButtonPress > 1) {
+							plus.runtime.quit();
+						} else {
+							plus.nativeUI.toast('再按一次退出应用');
+						}
+						setTimeout(function() {
+							backButtonPress = 0;
+						}, 1000);
+						return false;
+					};
+				});	
+				}else{
 						$.ready(function() {
 						document.getElementById('login').addEventListener('tap', function() {
 							var user = doc.getElementById('user').value;
@@ -154,31 +196,10 @@
 						    url:'main.html',
 						    id:'main.html',
 						 });
-
-
-
-
 });
-					
-			
-		
-						
-			
-					//返回退出
-					var backButtonPress = 0;
-					$.back = function(event) {
-						backButtonPress++;
-						if (backButtonPress > 1) {
-							plus.runtime.quit();
-						} else {
-							plus.nativeUI.toast('再按一次退出应用');
-						}
-						setTimeout(function() {
-							backButtonPress = 0;
-						}, 1000);
-						return false;
-					};
-				});
+				});	
+				}
+
 			}(mui, document));
 		</script>
 	</body>

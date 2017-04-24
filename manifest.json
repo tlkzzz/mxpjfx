@@ -82,7 +82,7 @@
 		"Webview": {},
 		"NativeUI": {},
 		"Navigator": {},
-		"NativeObj": {},"Share":{},"OAuth":{},"Device":{}
+		"NativeObj": {},"Share":{},"OAuth":{},"Device":{},"Camera":{},"Barcode":{},"Push":{},"Maps":{},"Audio":{},"Speech":{},"Payment":{},"Contacts":{},"Statistic":{},"Messaging":{},"Geolocation":{}
 	},
 	"plus": {
 		"splashscreen": {
@@ -105,7 +105,7 @@
 				"keystore": "",/*Android应用打包使用的密钥库文件*/
 				"password": "",/*Android应用打包使用密钥库中证书的密码*/
 				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
-				"permissions": ["<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>"]
+				"permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.SEND_SMS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.READ_SMS\"/>"]
 			},
 			"orientation": [
 				"portrait-primary",
@@ -194,7 +194,8 @@
 					"css/mui.min.css",
 					"fonts/mui.ttf",
 					"css/feedback-page.css",
-					"images/iconfont-tianjia.png"
+					"images/iconfont-tianjia.png",
+					"css/style.css"
 				],
 				"refer": [
 					"login.html"
@@ -209,7 +210,8 @@
 					"js/mui.min.js",
 					"js/app.js",
 					"css/style.css",
-					"pull_main.html"
+					"pull_main.html",
+					"pull.html"
 				],
 				"refer": [
 					"setting.html"
@@ -274,7 +276,9 @@
 					"unlock.html",
 					"forget_password.html",
 					"main.html",
-					"reg.html"
+					"reg.html",
+					"mains.html",
+					"mainss.html"
 				],
 				"priority": 0
 			},
@@ -297,6 +301,120 @@
 					"css/style.css"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"mains.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/style.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"mainss.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"pull_main.html"
+				],
+				"refer": [
+					"setting.html"
+				],
+				"priority": 0
+			},
+			"pull_main.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/vue.js",
+					"ck/cxxsck_add.html"
+				],
+				"refer": [
+					"cxxsck_add.html",
+					"ck/mydd_main.html"
+				],
+				"priority": 0
+			},
+			"ck/cxxsck_add.html": {
+				"priority": 0,
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"fonts/mui.ttf",
+					"images/cbd.jpg",
+					"images/yuantiao.jpg",
+					"images/logo.png",
+					"css/app.css",
+					"js/common.js"
+				],
+				"refer": [
+					"ck/barcode_scan2.html"
+				]
+			},
+			"cxxsck_add.html": {
+				"resources": [
+					"/css/style.css",
+					"/js/mui.min.js",
+					"/css/mui.min.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/style.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ewm.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/barcode_scan2.html": {
+				"resources": [
+					"css/common.css",
+					"js/common.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/mydd_main.html": {
+				"resources": [
+					"ck/mydd.html",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/mydd.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"ck/mydd_xq.html"
+				],
+				"priority": 0
+			},
+			"ck/mydd_xq.html": {
+				"resources": [
+					"js/common.js",
+					"images/logo.png",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"ck/barcode_scan2.html"
+				],
 				"priority": 0
 			}
 		},
