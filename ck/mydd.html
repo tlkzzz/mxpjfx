@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+			<style>
+			.mui-table h4,.mui-table h5,.mui-table .mui-h5,.mui-table .mui-h6,.mui-table p{
+		        margin-top: 0;
+		    }
+		    .mui-table h4{
+		        line-height: 21px;
+		        font-weight: 500;
+		    }
+		
+		    .mui-table .oa-icon{
+		        position: absolute;
+		        right:0;
+		        bottom: 0;
+		    }
+		    .mui-table .oa-icon-star-filled{
+		        color:#f14e41;
+		    }
+		</style>
+	</head>
+
+	<body>
+		<!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+					
+				</ul>
+			</div>
+		</div> 
+		<script src="../js/mui.min.js"></script>
+		<script>
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			function pulldownRefresh() {
+				setTimeout(function() {
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					for (var i = cells.length, len = i + 3; i < len; i++) {
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell';
+						li.innerHTML = li_html();
+						//下拉刷新，新纪录插到最前面；
+						table.insertBefore(li, table.firstChild);
+					}
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+				}, 1500);
+			}
+			var count = 0;
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					for (var i = cells.length, len = i + 2; i < len; i++) {
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell';
+						li.innerHTML = li_html();
+						table.appendChild(li);
+					}
+				}, 1500);
+			}
+			if (mui.os.plus) {
+				mui.plusReady(function() {
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pullupLoading();
+					mui('.mui-table-view').on('tap', 'li div a', function(event) {
+					var elem = this;
+//					parentNode  父节点
+					var li = elem.parentNode.parentNode;
+					mui.confirm('确认删除该条记录？', 'Hello', ['确认', '取消'], function(e) {
+						if (e.index == 0) {
+						console.log(li.children[0].innerText);//获取节点的值
+							li.parentNode.removeChild(li);
+						} else {
+							setTimeout(function() {
+								mui.swipeoutClose(li);
+							}, 0);
+						}
+					});
+				});
+				mui('.mui-table-view').on('tap', 'li', function(event) {
+					var elem = this;
+					var v = elem.children[0].innerText;
+					  mui.openWindow({
+					    url: 'mydd_xq.html', 
+					    id:'mydd_xq.html',
+					     extras:{
+					        name:v  //扩展参数
+					    }
+				 	 });
+			
+				});
+						
+					}, 1000);
+
+				});
+			} else {
+				mui.ready(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+						mui('.mui-table-view').on('tap', 'li div a', function(event) {
+					var elem = this;
+//					parentNode  父节点
+					var li = elem.parentNode.parentNode;
+					mui.confirm('确认删除该条记录？', 'Hello', ['确认', '取消'], function(e) {
+						if (e.index == 0) {
+						console.log(li.children[0].innerText);//获取节点的值
+							li.parentNode.removeChild(li);
+						} else {
+							setTimeout(function() {
+								mui.swipeoutClose(li);
+							}, 0);
+						}
+					});
+				});
+				
+				mui('.mui-table-view').on('tap', 'li', function(event) {
+					var elem = this;
+					var v = elem.children[0].innerText;
+//					parentNode  父节点
+//					var li = elem.parentNode.parentNode;
+					console.log(v)
+					  mui.openWindow({
+					    url: 'mydd_xq.html', 
+					    id:'mydd_xq.html',
+					     extras:{
+					        id:v  //扩展参数
+					    }
+				 	 });
+			
+				});
+				});
+			}
+			
+			
+			//mui-badge mui-badge-warning 以审批样式
+			function li_html(){
+			var a = '<div style="display: none;">123456</div>'+
+		        		'<div class="mui-slider-right mui-disabled">'+
+							'<a  class="mui-btn mui-btn-red">删除</a>'+
+						'</div>'+
+					'<div class="mui-slider-handle">'+
+		            '<div class="mui-table">'+
+		                '<div class="mui-table-cell mui-col-xs-12">'+
+		                    '<h4 class="mui-ellipsis-2">信息化推进办公室张彦合同付款信息化</h4>'+
+		                   	' <div class="mui-table-cell mui-col-xs-10"> '+
+			                    '<h5>下单人：李四&nbsp;&nbsp;&nbsp;&nbsp;2017-05-01 12:25</h5>'+
+			                    '<p>订单号：51511616111616</p>'+
+			                 '</div>'+
+			                    	'<div class="mui-table-cell mui-col-xs-2 mui-text-right">'+
+			                     '<span class="mui-badge mui-badge-purple">未审批</span>'+
+			                     ' <span class="mui-badge mui-badge-success">¥15000.00</span>'+
+			              		   ' </div>'+
+		              '  </div>'+
+		           ' </div>'+
+		           ' </div>';
+		           return a;
+			}
+			
+			
+		</script>
+	</body>
+
+</html>
