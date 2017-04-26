@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>商品入库</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">商品入库</h1>
+		</header>
+		<div class="mui-content">
+			<form id='login-form' class="mui-input-group">
+			<div class="mui-input-row">
+					<label>入库方式</label>
+					<input id='rkMode' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+					<label>仓库选择</label>
+					<input id='ckxz' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+					<label>供应商选择</label>
+					<input id='gysxz' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+					<label>商品选择</label>
+					<input id='xzGoods' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">	
+				<label>数量</label>
+			<div class="mui-numbox" data-numbox-min='1' 	style="margin-right: 55%;">
+					<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+					<input id="test" class="mui-input-numbox" type="number" value="5" />
+					<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+				</div>
+			</div>
+			<div class="mui-input-row">
+					<label>成本价</label>
+					<input id='cbj' type="text" class="mui-input-clear mui-input" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')" >
+			</div>
+			
+			</form>
+			<div class="mui-content-padded">
+				<button id='Save' class="mui-btn mui-btn-block mui-btn-primary">保存</button>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+		<!--<script src="../js/mui.picker.min.js"></script>-->
+		<script src="../js/mui.picker.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
+		<script src="../js/city.data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		mui.init({
+		});
+		mui.ready(function() {
+//			入库方式
+			var rkModePicker = new mui.PopPicker();
+			 rkModePicker.setData([{value:'1',text:'进货'},{value:'2',text:'退货'},{value:'3',text:'换货'}]); 
+			var rkModePickerButton = document.getElementById('rkMode');
+				rkModePickerButton.addEventListener('tap', function(event) {
+						rkModePicker.show(function(items) {
+							rkModePickerButton.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+//			仓库选择
+			var ckxzPicker = new mui.PopPicker();
+			 ckxzPicker.setData([{value:'4',text:'华北仓库'},{value:'5',text:'华中仓库'},{value:'6',text:'华南仓库'}]); 
+			var ckxzPickerT = document.getElementById('ckxz');
+				ckxzPickerT.addEventListener('tap', function(event) {
+						ckxzPicker.show(function(items) {
+							ckxzPickerT.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+//				供应商选择
+// mui.toast('55555');
+			var gysxzPicker = new mui.PopPicker();
+			 gysxzPicker.setData([{value:'7',text:'Sunline'},{value:'8',text:'Dw'},{value:'9',text:'LV'}]); 
+			var gysxzPickerT = document.getElementById('gysxz');
+				gysxzPickerT.addEventListener('tap', function(event) {
+						gysxzPicker.show(function(items) {
+							gysxzPickerT.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+					
+		
+			document.getElementById('Save').addEventListener('tap', function() {
+					var rkMode=document.getElementById('rkMode').value;
+					if(rkMode.length==0 || rkMode==''){
+						mui.toast('请选择入库方式');
+						return false;
+					}
+					var ckxz=document.getElementById('ckxz').value;
+					if(ckxz.length==0 || ckxz==''){
+						mui.toast('请选择仓库');
+						return false;
+					}
+					var gysxz=document.getElementById('gysxz').value;
+					if(gysxz.length==0 || gysxz==''){
+						mui.toast('请选择供应商');
+						return false;
+					}
+//					var xzGoods=document.getElementById('xzGoods').value;
+//					if(xzGoods.length==0 || xzGoods==''){
+//						mui.toast('请选择商品');
+//						return false;
+//					}
+					mui.toast('保存成功');
+			})
+		});
+		document.getElementById("xzGoods").addEventListener('tap',function(){
+		mui.openWindow({
+      					url:'Goods.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'Goods.html',//子页面标志
+      					styles:{
+        					top:'45px',//子页面顶部位置
+        					bottom:'0px',//子页面底部位置
+      					},
+   					 })
+   					 });
+   					 
+   					 function shangP(text){
+   					 	document.getElementById("xzGoods").value=text;
+   					 	mui.alert("1111");
+   					 }
+	</script>
+</html>

@@ -26,7 +26,7 @@
 					<div class="mui-slider-item">
 						<ul class="mui-table-view mui-grid-view mui-grid-9">
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
+								<a id="rkGoods">
 									<span class="mui-icon mui-icon-home"><span class="mui-badge">5</span></span>
 									<div class="mui-media-body">Home</div>
 								</a>
@@ -236,7 +236,7 @@
 //						    sp: null
 //						  }
 //						})	
-	mui.plusReady(function() {
+	mui.ready(function() {
 					if (mui.os.plus) {
 					setTimeout(function() {
 					
@@ -247,6 +247,12 @@
 				mui.openWindow({
 							id: 'ck/cxxsck_add',
 							url: 'ck/cxxsck_add.html',
+					})
+				})
+				document.getElementById('rkGoods').addEventListener('tap', function(event) {	
+				mui.openWindow({
+							id: 'ck/rkGoods',
+							url: 'ck/rkGoods.html',
 					})
 				})
 				document.getElementById('mydd_main').addEventListener('tap', function(event) {	
