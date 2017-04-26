@@ -434,7 +434,11 @@
 					});
 					if (checkedValues.length > 0) {
 						mui.alert('你选择了: ' + checkedValues);
-						window.opener.shangP(checkedValues);
+						ws=plus.webview.currentWebview();
+						wo=ws.opener();
+						result = result.replace(/\n/g, '');
+    					wo.evalJS("shangP('"+ result +"');");
+    					back();
 					} else {
 						mui.alert('你没选择任何机场');
 					}
