@@ -84,9 +84,9 @@
 					<div class="mui-slider-item">
 						<ul class="mui-table-view mui-grid-view mui-grid-9">
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
+								<a id="ykGoods">
 									<span class="mui-icon mui-icon-home"></span>
-									<div class="mui-media-body">Home</div>
+									<div class="mui-media-body">商品移库</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -148,9 +148,9 @@
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
+								<a id="ykjl">
 									<span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
-									<div class="mui-media-body">Email</div>
+									<div class="mui-media-body">移库记录</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -259,6 +259,18 @@
 				mui.openWindow({
 							id: 'ck/rkjlMain',
 							url: 'ck/rkjlMain.html',
+					})
+				})
+				document.getElementById('ykGoods').addEventListener('tap', function(event) {	
+				mui.openWindow({
+							id: 'ck/ykGoods',
+							url: 'ck/ykGoods.html',
+					})
+				})
+				document.getElementById('ykjl').addEventListener('tap', function(event) {	
+				mui.openWindow({
+							id: 'ck/ykjlMain',
+							url: 'ck/ykjlMain.html',
 					})
 				})
 				document.getElementById('mydd_main').addEventListener('tap', function(event) {	
