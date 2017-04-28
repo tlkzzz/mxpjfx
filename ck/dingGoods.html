@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>订货</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			#barcode {
+	background:#0F0;
+	height:480px;
+	width:360px;
+}	
+#topPopover {
+				position: fixed;
+				top: 16px;
+				right: 6px;
+			}
+			#topPopover .mui-popover-arrow {
+				left: auto;
+				right: 6px;
+			}
+			p {
+				text-indent: 22px;
+			}
+			span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				margin-left: -15px;
+				padding-right: 10px;
+			}
+			.mui-popover {
+				height: 300px;
+			}
+		</style>
+	</head>
+
+	<body>
+			<header class="mui-bar mui-bar-nav">
+			<a  class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">订货</h1>
+		</header>
+		
+				<div class="mui-content">
+			
+		<div class="mui-card">
+				<div class="mui-card-header mui-card-media">
+					<img src="../images/logo.png" />
+					<div class="mui-media-body">
+						<p style="color: #333;">新平江超市</p> 
+						<p>长沙市雨花区高桥水暖城114号	</p>
+					</div>
+				</div>
+				<div class="mui-card-footer">
+					<a class="mui-icon mui-icon-paperplane"></a>
+					<a  id="saoma" onclick="clicked('barcode_scan2.html',true,true)" class="mui-icon mui-icon-camera"></a>
+					<a id="addcard" class="mui-icon mui-icon-plus"></a>
+				</div>
+			</div>	
+			<!--<div id="barcode"></div>-->
+	
+			<div class="carddiv"></div>
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<script src="../js/mui.min.js"></script>
+			<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			var bc;
+			var i=0
+			if (mui.os.plus) {
+				mui.plusReady(function(){
+				var add = document.getElementById('addcard');
+				add.addEventListener('tap', function(event) {
+					i++;
+					addv();
+				})
+			})
+			}else{
+			mui.ready(function(){
+				var add = document.getElementById('addcard');
+				add.addEventListener('tap', function(event) {
+					i++;
+					addv();
+				})
+			})	
+				
+			}
+			
+				//扫描后回调
+			function scaned(r){
+				mui.toast(r);
+				addv ();
+}
+			
+			function  addv (){
+							var table = document.body.querySelector('.carddiv');
+//					table.id="taid";
+					var dc=	document.createElement('div');
+					dc.className="mui-card";
+					dc.innerHTML='<div class="mui-card-content">'+
+					'<div class="mui-card-content-inner">'+
+						'<p><span>商品:</span><span style="color: #333;">龙一罐装混合果蔬脆</span></p>'+
+						'<p><span>规格:</span><span style="color: #333;">1*10*100</span></p>'+
+						'<p><span>单价:</span><span style="color: #333;">100/件</span></p>'+
+						'<p>'+
+						'<div class="mui-numbox">'+
+						 ' <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>'+
+						 ' <input class="mui-numbox-input" type="number" />'+
+						 ' <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>'+
+						'</div>'+
+					'	</p>'+
+						'	<p>'+
+					'	<div class="mui-numbox">'+
+						'  <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>'+
+						'  <input class="mui-numbox-input" type="number" />'+
+						 ' <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>'+
+					'	</div>'+
+					'<p><span>商品价格:</span><span style="color: #333;">2000</span></p>'+
+					'	</p>'+
+				'</div>'+
+				'</div>'+
+				 '<div class="mui-card-footer">'+
+					'<a class="mui-card-link">保存'+i+'</a>'+
+					'<a class="mui-card-link">删除</a>'+
+				  '</div>';
+					table.appendChild(dc);
+			}
+			
+			
+			
+			
+			
+		</script>
+	</body>
+
+</html>

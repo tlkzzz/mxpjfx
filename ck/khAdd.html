@@ -9,6 +9,8 @@
 
 		<!--标准mui.css-->
 		<link rel="stylesheet" href="../css/mui.min.css">
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
 		<!--App自定义的css-->
 		<!--<link rel="stylesheet" type="text/css" href="../css/app.css"/>-->
 		
@@ -26,11 +28,144 @@
 						<div class="mui-collapse-content">
 							<form class="mui-input-group">
 								<div class="mui-input-row">
-									<label>Input</label>
-									<input type="text" placeholder="普通输入框">
+									<label>门店图片</label>
+									<input type="text" placeholder="图片">
 								</div>
+								<div class="mui-input-row">
+									<label>客户分类</label>
+									<input id='khfl' type="text" class="mui-input-clear mui-input" readonly="true">
+								</div>
+								
+								<div class="mui-input-row">
+									<label>区域</label>
+									<input id='showCityPicker3' type="text" class="mui-input-clear mui-input" readonly="true">
+								</div>
+								
+								
+								<div class="mui-input-row">
+									<label>详细地址</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>采购员</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>店铺名称</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>客户名称</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>手机号码</label>
+									<input type="text">
+								</div>
+								</form>
 						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">其他信息</a>
+						<div class="mui-collapse-content">
+							<form class="mui-input-group">
+								<div class="mui-input-row">
+									<label>采购员联系方式</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>邮编</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>微信</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>QQ</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>回执周期</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>额度</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>销售渠道</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>进货渠道</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>电话</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>电子邮件</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>积分系数</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>开户行名称</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>开户行账号</label>
+									<input type="text">
+								</div>
+								<div class="mui-input-row">
+									<label>开户人</label>
+									<input type="text">
+								</div>
+								</form>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
+		<script src="../js/city.data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			mui.ready(function() {
+//			移入仓库选择
+			var khflPicker = new mui.PopPicker();
+			 khflPicker.setData([{value:'4',text:'小型客户'},{value:'5',text:'中型客户'},{value:'6',text:'大型客户'}]); 
+			var khflPickerT = document.getElementById('khfl');
+				khflPickerT.addEventListener('tap', function(event) {
+						khflPicker.show(function(items) {
+							khflPickerT.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+					var cityPicker3 = new mui.PopPicker({
+						layer: 3
+					});
+					cityPicker3.setData(cityData3);
+					var showCityPickerButton = document.getElementById('showCityPicker3');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker3.show(function(items) {
+							showCityPickerButton.value =  (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				})
+		</script>
 	</body>
 </html>
