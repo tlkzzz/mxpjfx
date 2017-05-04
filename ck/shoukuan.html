@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>收款信息添加</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">收款信息添加</h1>
+		</header>
+		<div class="mui-content">
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label>客户</label>
+					<input id='keh' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+					<label>订单编号</label>
+					<input id='ddbh' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+			
+					<label>费用类型</label>
+					<div class="mui-input-row mui-radio mui-left"  >
+						<label  style="float: left;">预付款</label>
+					<input name="radio1" type="radio"  style="width:100px">
+					</div>
+					<div class="mui-input-row mui-radio mui-left" style="float: left;">
+						<label  style="float: left;">欠款</label>
+					<input name="radio1" type="radio"   style="float: left;width:100px">
+					</div>
+			</div>
+			<div class="mui-input-row">
+					<label>金额</label>
+					<input type="text" class="mui-input-clear mui-input">
+			</div>
+			<div class="mui-input-row">
+					<label>优惠金额</label>
+					<input type="text" class="mui-input-clear mui-input">
+			</div>
+		</form>
+		<div class="mui-content-padded">
+				<button id='Save' class="mui-btn mui-btn-block mui-btn-primary">保存</button>
+			</div>
+	</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+		<!--<script src="../js/mui.picker.min.js"></script>-->
+		<script src="../js/mui.picker.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
+		<script src="../js/city.data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		mui.init({
+		});
+		mui.ready(function() {
+//		客户选择
+			var kehPicker = new mui.PopPicker();
+			 kehPicker.setData([{value:'4',text:'钻石王老五'},{value:'5',text:'极品小鲜肉'},{value:'6',text:'霸道富二代'}]); 
+			var kehPickerT = document.getElementById('keh');
+				kehPickerT.addEventListener('tap', function(event) {
+						kehPicker.show(function(items) {
+							kehPickerT.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+//				订单编号选择
+// mui.toast('55555');
+			var ddbhPicker = new mui.PopPicker();
+			 ddbhPicker.setData([{value:'7',text:'Sunline'},{value:'8',text:'Dw'},{value:'9',text:'LV'}]); 
+			var ddbhPickerT = document.getElementById('ddbh');
+				ddbhPickerT.addEventListener('tap', function(event) {
+						ddbhPicker.show(function(items) {
+							ddbhPickerT.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+			var fyTypePicker = new mui.PopPicker();
+			 fyTypePicker.setData([{value:'1',text:'陈列费'},{value:'2',text:'运费'},{value:'3',text:'返利'}]); 
+			var fyTypePickerT = document.getElementById('fyType');
+				fyTypePickerT.addEventListener('tap', function(event) {
+						fyTypePicker.show(function(items) {
+							fyTypePickerT.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+		
+			document.getElementById('Save').addEventListener('tap', function() {
+					
+					var keh=document.getElementById('keh').value;
+					if(keh.length==0 || keh==''){
+						mui.toast('请选择客户');
+						return false;
+					}
+					var ddbh=document.getElementById('ddbh').value;
+					if(ddbh.length==0 || ddbh==''){
+						mui.toast('请选择订单编号');
+						return false;
+					}
+					var fyType=document.getElementById('fyType').value;
+					if(fyType.length==0 || fyType==''){
+						mui.toast('请选择费用类型');
+						return false;
+					}
+					mui.toast('付款信息添加成功');
+			})
+		});
+		
+	</script>
+</html>
