@@ -78,6 +78,7 @@
 		
 		
 		<script src="../js/mui.min.js"></script>
+		<script src="../js/config.js"></script>
 			<script type="text/javascript" src="../js/common.js"></script>
 		<script type="text/javascript">
 			mui.init()
@@ -95,10 +96,49 @@
 			mui.ready(function(){
 				var add = document.getElementById('addcard');
 				add.addEventListener('tap', function(event) {
-					i++;
-					addv();
-				})
-			})	
+					mui.openWindow({
+      					url:'Goods.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'Goods.html',//子页面标志
+      					styles:{
+        					top:'45px',//子页面顶部位置
+        					bottom:'0px',//子页面底部位置
+      					},
+   					 })
+					
+//					i++;
+//					addv();
+					
+				});
+				
+				var Save=document.getElementById('Save');
+				
+				Save.addEventListener('tap', function() {
+					alert("进入方法");
+//					var ycck=document.getElementById('ycck').value;
+//					if(ycck.length==0 || ycck==''){
+//						mui.toast('请选择移出仓库');
+//						return false;
+//					}
+
+						
+//					var param ={ycck,yrck,xzGoods,shul,cbj}
+//					 mui.get(XPJFX_URL+'m/mYkGoods/list',param,function(data){
+//						mui.toast('移库成功');
+//					},'json'
+//				);
+
+
+//		var add = document.getElementById('addcard');
+//				add.addEventListener('tap', function(event) {
+//					i++;
+//					addv();
+//					
+//				});
+					
+		});
+	});
+				
+
 				
 			}
 			
@@ -107,11 +147,18 @@
 				mui.toast(r);
 				addv ();
 }
+				//扫描后回调
+			function hqgoods(r){
+				alert(r)
+}
+			
+			
 			
 			function  addv (){
 							var table = document.body.querySelector('.carddiv');
 //					table.id="taid";
 					var dc=	document.createElement('div');
+//					var ss = "s"+"123";
 					dc.className="mui-card";
 					dc.innerHTML='<div class="mui-card-content">'+
 					'<div class="mui-card-content-inner">'+
@@ -121,7 +168,7 @@
 						'<p>'+
 						'<div class="mui-numbox">'+
 						 ' <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>'+
-						 ' <input class="mui-numbox-input" type="number" />'+
+						 ' <input   id = "i'+123+'"  class="mui-numbox-input" type="number" />'+
 						 ' <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>'+
 						'</div>'+
 					'	</p>'+
@@ -135,13 +182,21 @@
 				'</div>'+
 				'</div>'+
 				 '<div class="mui-card-footer">'+
-					'<a class="mui-card-link">保存'+i+'</a>'+
-					'<a class="mui-card-link">删除</a>'+
+					'<button id="ss" type="button" onclick="adt('+123+')"  class="mui-btn mui-btn-success mui-icon mui-icon-plus mui-right">保存'+i+'</button>'+
+					'<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">'+
+					'删除   '+
+					 '<span class="mui-icon mui-icon-trash"></span>'+
+		        '</button>'+
+//					'<a class="mui-card-link">删除</a>'+
 				  '</div>';
 					table.appendChild(dc);
 			}
 			
-			
+	function adt(x){
+		var i = 'i'+x;
+	var s=	document.getElementById(i).value;
+		alert(s)
+	}
 			
 			
 			

@@ -3,11 +3,12 @@
  * 当您要参考这个演示程序进行相关 app 的开发时，
  * 请注意将相关方法调整成 “基于服务端Service” 的实现。
  **/
+
 (function($, owner) {
 	/**
 	 * 用户登录
 	 **/
-	var url = 'http://localhost/a/';
+	
 	owner.login = function(loginInfo, callback) {
 		callback = callback || $.noop;
 		loginInfo = loginInfo || {};

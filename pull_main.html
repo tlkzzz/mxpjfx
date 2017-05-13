@@ -90,21 +90,21 @@
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
+								<a id="fukuan">
 									<span class="mui-icon mui-icon-email"></span></span>
-									<div class="mui-media-body">Email</div>
+									<div class="mui-media-body">付款</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
+								<a id="shoukuan">
 									<span class="mui-icon mui-icon-chatbubble"></span>
-									<div class="mui-media-body">Chat</div>
+									<div class="mui-media-body">收款</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
+								<a id="dingH">
 									<span class="mui-icon mui-icon-location"></span>
-									<div class="mui-media-body">location</div>
+									<div class="mui-media-body">订货</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -154,9 +154,9 @@
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
+								<a id="dingHlist">
 									<span class="mui-icon mui-icon-chatbubble"></span>
-									<div class="mui-media-body">Chat</div>
+									<div class="mui-media-body">订货记录</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -271,6 +271,30 @@
 				mui.openWindow({
 							id: 'ck/ykjlMain',
 							url: 'ck/ykjlMain.html',
+					})
+				})
+				document.getElementById('fukuan').addEventListener('tap', function(event) {	
+				mui.openWindow({
+							id: 'ck/fukuan',
+							url: 'ck/fukuan.html',
+					})
+				})
+				document.getElementById('dingH').addEventListener('tap', function(event) {	
+				mui.openWindow({
+							id: 'ck/dingGoods',
+							url: 'ck/dingGoods.html',
+					})
+				})
+				document.getElementById('dingHlist').addEventListener('tap', function(event) {	
+				mui.openWindow({
+							id: 'ck/dingHList',
+							url: 'ck/dingHList.html',
+					})
+				})
+				document.getElementById('shoukuan').addEventListener('tap', function(event) {	
+				mui.openWindow({
+							id: 'ck/shoukuan',
+							url: 'ck/shoukuan.html',
 					})
 				})
 				document.getElementById('mydd_main').addEventListener('tap', function(event) {	

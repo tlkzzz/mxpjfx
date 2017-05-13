@@ -28,16 +28,8 @@
 					<input id='ddbh' type="text" class="mui-input-clear mui-input" readonly="true">
 			</div>
 			<div class="mui-input-row">
-			
 					<label>费用类型</label>
-					<div class="mui-input-row mui-radio mui-left"  >
-						<label  style="float: left;">预付款</label>
-					<input name="radio1" type="radio"  style="width:100px">
-					</div>
-					<div class="mui-input-row mui-radio mui-left" style="float: left;">
-						<label  style="float: left;">欠款</label>
-					<input name="radio1" type="radio"   style="float: left;width:100px">
-					</div>
+					<input id='fyType' type="text" class="mui-input-clear mui-input" readonly="true">
 			</div>
 			<div class="mui-input-row">
 					<label>金额</label>
@@ -88,7 +80,7 @@
 					}, false);
 					
 			var fyTypePicker = new mui.PopPicker();
-			 fyTypePicker.setData([{value:'1',text:'陈列费'},{value:'2',text:'运费'},{value:'3',text:'返利'}]); 
+			 fyTypePicker.setData([{value:'1',text:'预收款'},{value:'2',text:'欠款'}]); 
 			var fyTypePickerT = document.getElementById('fyType');
 				fyTypePickerT.addEventListener('tap', function(event) {
 						fyTypePicker.show(function(items) {

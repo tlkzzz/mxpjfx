@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--<link rel="stylesheet" type="text/css" href="../css/feedback-page.css" />-->
+		<link href="../css/common_imgup.css" type="text/css" rel="stylesheet"/>
+		<link href="../css/index_imgup.css" type="text/css" rel="stylesheet"/>
+	</head>
+
+	<body>
+	
+		<!--页面主结构结束-->
+	
+		<header class="mui-bar mui-bar-nav">
+			<a  class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">我的订单</h1>
+		</header>
+		
+		<div class="mui-center">
+			<div class="img-box full">
+			<section class=" img-section">
+				<p class="up-p">作品图片：<span class="up-span">最多可以上传4张图片，马上上传</span></p>
+				<div class="z_photo upimg-div clear" >
+		               	 <section class="z_file fl">
+		               	 	<img src="../img/a11.png" class="add-img">
+		               	 	<input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple />
+		               	 </section>
+		         </div>
+			 </section>
+		</div>
+        <aside class="mask works-mask">
+			<div class="mask-content">
+				<p class="del-p">您确定要删除作品图片吗？</p>
+				<p class="check-p"><span class="del-com wsdel-ok">确定</span><span class="wsdel-no">取消</span></p>
+			</div>
+		</aside>
+		
+		
+		
+		
+		</div>
+		
+		
+		
+	</body>
+	<script src="../js/mui.min.js "></script>
+	<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+	<script src="../js/imgUp.js"></script>
+	<script>
+		mui.init();
+		 //初始化单页view
+	
+	</script>
+
+</html>

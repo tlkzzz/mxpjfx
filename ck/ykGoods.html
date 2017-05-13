@@ -34,7 +34,7 @@
 				<label>数量</label>
 			<div class="mui-numbox" data-numbox-min='1' 	style="margin-right: 55%;">
 					<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-					<input id="test" class="mui-input-numbox" type="number" value="5" />
+					<input id="shul" class="mui-input-numbox" type="number" value="5" />
 					<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 				</div>
 			</div>
@@ -50,6 +50,7 @@
 		</div>
 	</body>
 	<script src="../js/mui.min.js"></script>
+	<script src="../js/config.js"></script>
 		<!--<script src="../js/mui.picker.min.js"></script>-->
 		<script src="../js/mui.picker.js"></script>
 		<script src="../js/mui.poppicker.js"></script>
@@ -97,12 +98,24 @@
 						mui.toast('请选择移入仓库');
 						return false;
 					}
-//					var xzGoods=document.getElementById('xzGoods').value;
+					var xzGoods=document.getElementById('xzGoods').value;
 //					if(xzGoods.length==0 || xzGoods==''){
 //						mui.toast('请选择商品');
 //						return false;
 //					}
-					mui.toast('移库成功');
+					var shul=document.getElementById('shul').value;
+					var cbj=document.getElementById('cbj').value;
+						if(cbj.length==0 || cbj==''){
+							mui.toast('请填写成本价');
+							return false;
+					}
+						
+					var param ={ycck,yrck,xzGoods,shul,cbj}
+					 mui.get(XPJFX_URL+'m/mYkGoods/list',param,function(data){
+						mui.toast('移库成功');
+					},'json'
+				);
+					
 			})
 		});
 		document.getElementById("xzGoods").addEventListener('tap',function(){

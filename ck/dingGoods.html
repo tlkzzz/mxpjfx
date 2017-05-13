@@ -64,28 +64,33 @@
 			<!--<div id="barcode"></div>-->
 	
 			<div class="carddiv"></div>
-			
+			<div class="mui-card-header mui-card-media" style="position:fixed;width: 100%;bottom:1px;background-color:#D3D3D3;">
+				<div style="float: left;">
+					<label><span style="color: #000000;">合计：20000</span></label>
+				</div>
+				
+				<div style="float: right;margin-top: -5px;">
+				<button  type="button" class="mui-btn mui-btn-primary" data-loading-text = "提交中" data-loading-icon-position="right">提交</button>
+				<!--<button type="button" class="mui-btn mui-btn-primary mui-btn-outlined">提交</button>-->
+				</div>
+			</div>
+			</div>
 		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<script type="text/javascript" src="../js/common.js"></script>
 		<script type="text/javascript">
-			
-			mui.init()
+			mui.init({
+            swipeBack: true //启用右滑关闭功能
+        });
+			 mui(document.body).on('tap', '.mui-btn', function(e) {
+            mui(this).button('loading');
+            setTimeout(function() {
+                mui(this).button('reset');
+            }.bind(this), 2000);
+        });
+//			mui.init()
 			var bc;
 			var i=0
 			if (mui.os.plus) {
@@ -102,6 +107,47 @@
 				add.addEventListener('tap', function(event) {
 					i++;
 					addv();
+					
+					
+									var result = document.getElementById('demo4');
+				var btns = mui('.btn');
+				btns.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						/*
+						 * 首次显示时实例化组件
+						 * 示例为了简洁，将 options 放在了按钮的 dom 上
+						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+						 */
+						var picker = new mui.DtPicker(options);
+						picker.show(function(rs) {
+							/*
+							 * rs.value 拼合后的 value
+							 * rs.text 拼合后的 text
+							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+							 * rs.m 月，用法同年
+							 * rs.d 日，用法同年
+							 * rs.h 时，用法同年
+							 * rs.i 分（minutes 的第二个字母），用法同年
+							 */
+//							mui.toast('5555');
+							result.innerText =  rs.text;
+							/* 
+							 * 返回 false 可以阻止选择框的关闭
+							 * return false;
+							 */
+							/*
+							 * 释放组件资源，释放后将将不能再操作组件
+							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+							 */
+							picker.dispose();
+						});
+					}, false);
+				});
 				})
 			})	
 				
@@ -116,10 +162,15 @@
 			function  addv (){
 							var table = document.body.querySelector('.carddiv');
 //					table.id="taid";
+	var  s =  '{"type":"date"}';
 					var dc=	document.createElement('div');
 					dc.className="mui-card";
 					dc.innerHTML='<div class="mui-card-content">'+
-	'<button id="demo4" data-options="{"type":"date"}" class="btn mui-btn mui-btn-block">选择日期 ...</button>'+
+//	'<button id="demo4" data-options='+' {"type":"date"}'+'class="btn mui-btn mui-btn-block">选择日期 ...</button>'+
+
+	'<button id="demo4"    data-options='+s+' class="btn mui-btn mui-btn-block">选择日期</button>'+
+
+
 	'<div id="result" class="ui-alert"></div>'+
 					'<div class="mui-card-content-inner">'+
 						'<p><span>商品:</span><span style="color: #333;">龙一罐装混合果蔬脆</span></p>'+
@@ -150,48 +201,47 @@
 			}
 			
 			
-			(function($) {
-				$.init();
-				var result = $('#result')[0];
-				var btns = $('.btn');
-				btns.each(function(i, btn) {
-					btn.addEventListener('tap', function() {
-						var optionsJson = this.getAttribute('data-options') || '{}';
-						var options = JSON.parse(optionsJson);
-						var id = this.getAttribute('id');
-						/*
-						 * 首次显示时实例化组件
-						 * 示例为了简洁，将 options 放在了按钮的 dom 上
-						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
-						 */
-						var picker = new $.DtPicker(options);
-						picker.show(function(rs) {
-							/*
-							 * rs.value 拼合后的 value
-							 * rs.text 拼合后的 text
-							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
-							 * rs.m 月，用法同年
-							 * rs.d 日，用法同年
-							 * rs.h 时，用法同年
-							 * rs.i 分（minutes 的第二个字母），用法同年
-							 */
-							result.innerText = '选择结果: ' + rs.text;
-							/* 
-							 * 返回 false 可以阻止选择框的关闭
-							 * return false;
-							 */
-							/*
-							 * 释放组件资源，释放后将将不能再操作组件
-							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
-							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
-							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
-							 */
-							picker.dispose();
-						});
-					}, false);
-				});
-			})(mui);
-			
+//			(function($) {
+//				$.init();
+//				var result = $('#result')[0];
+//				var btns = $('.btn');
+//				btns.each(function(i, btn) {
+//					btn.addEventListener('tap', function() {
+//						var optionsJson = this.getAttribute('data-options') || '{}';
+//						var options = JSON.parse(optionsJson);
+//						var id = this.getAttribute('id');
+//						/*
+//						 * 首次显示时实例化组件
+//						 * 示例为了简洁，将 options 放在了按钮的 dom 上
+//						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+//						 */
+//						var picker = new $.DtPicker(options);
+//						picker.show(function(rs) {
+//							/*
+//							 * rs.value 拼合后的 value
+//							 * rs.text 拼合后的 text
+//							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+//							 * rs.m 月，用法同年
+//							 * rs.d 日，用法同年
+//							 * rs.h 时，用法同年
+//							 * rs.i 分（minutes 的第二个字母），用法同年
+//							 */
+//							result.innerText = '选择结果: ' + rs.text;
+//							/* 
+//							 * 返回 false 可以阻止选择框的关闭
+//							 * return false;
+//							 */
+//							/*
+//							 * 释放组件资源，释放后将将不能再操作组件
+//							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+//							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+//							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+//							 */
+//							picker.dispose();
+//						});
+//					}, false);
+//				});
+//			})(mui);
 			
 		</script>
 	</body>
