@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 	<head>
@@ -6,6 +6,8 @@
 		<title>车辆销售出库新增</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
 		<style>
 			#barcode {
 	background:#0F0;
@@ -45,15 +47,18 @@
 				<div class="mui-content">
 			
 		<div class="mui-card">
-				<div class="mui-card-header mui-card-media">
+				<div class="mui-card-header mui-card-media" id="dianpu" style="display: none;">
 					<img src="../images/logo.png" />
 					<div class="mui-media-body">
-						<p style="color: #333;">新平江超市</p> 
-						<p>长沙市雨花区高桥水暖城114号	</p>
+						<!--<input id="storeId" type="text"  border="0px;" readonly="readonly"/>-->
+						<p style="display: none;" id="khxxid"></p>
+						<p style="color: #333;margin-top: auto;" id="storeId"></p> 
+						<p style="color: #333;margin-top: auto;" id="dz"></p>
 					</div>
 				</div>
+					<input id='xsck' type="text" class="mui-input-clear mui-input" readonly="true" placeholder="选择出库仓库" style="margin-bottom: auto;">
 				<div class="mui-card-footer">
-					<a class="mui-icon mui-icon-paperplane"></a>
+					<a id="khxz" class="mui-icon mui-icon-paperplane"></a>
 					<a  id="saoma" onclick="clicked('barcode_scan2.html',true,true)" class="mui-icon mui-icon-camera"></a>
 					<a id="addcard" class="mui-icon mui-icon-plus"></a>
 				</div>
@@ -61,7 +66,16 @@
 			<!--<div id="barcode"></div>-->
 	
 			<div class="carddiv"></div>
-			
+			<div class="mui-card-header mui-card-media" style="position:fixed;width: 100%;bottom:1px;background-color:#D3D3D3;">
+				<div style="float: left;">
+					<label><span style="color: #000000;">合计：</span><span style="color: #000000;" id="hj">0</span><span style="color: #000000;">￥</span></label>
+				</div>
+				
+				<div id="tjxs" style="float: right;margin-top: -5px;display: none;">
+				<button id="tj"  type="button" class="mui-btn mui-btn-primary" data-loading-text = "提交中" data-loading-icon-position="right">提交</button>
+				<!--<button type="button" class="mui-btn mui-btn-primary mui-btn-outlined">提交</button>-->
+				</div>
+			</div>
 		</div>
 		
 		
@@ -79,18 +93,81 @@
 		
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/config.js"></script>
-			<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../js/mui.picker.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
+			<!--<script type="text/javascript" src="../js/common.js"></script>-->
 		<script type="text/javascript">
 			mui.init()
 			var bc;
-			var i=0
+			var i=0;
+			var j;
 			if (mui.os.plus) {
 				mui.plusReady(function(){
+					var userid="4c99d98921e94ee99bbed4157d69623f";
+					mui.get(XPJFX_URL+'m/mXsAdd/xsckck',{userid:userid},function(data){
+						console.log(data[0].cHouse.name);
+					var newArr = [];
+					var ckxzPicker = new mui.PopPicker();
+//			 		ckxzPicker.setData(data);
+			 	for(j=0;j<data.length;j++){
+			 		console.log(data[j].cHouse.id);
+			 		console.log(data[j].cHouse.name);
+			 		newArr.push({value:data[j].cHouse.id,text:data[j].cHouse.name});
+//			 		ckxzPicker.setData([{value:data[j].cHouse.id,text:data[j].cHouse.name}]);
+//					ckxzPicker.pickers[j].setSelectedIndex(data[j].cHouse.id);
+//					ckxzPicker.setValue(data[j].cHouse.name);
+//					ckxzPicker.pickers[j].setValue(data[j].cHouse.name);
+			 	}
+			 	ckxzPicker.setData(newArr);
+			var ckxzPickerT = document.getElementById('xsck');
+				ckxzPickerT.addEventListener('tap', function(event) {
+						ckxzPicker.show(function(items) {
+							ckxzPickerT.value = items[0].text;
+							ckxzPickerT.text = items[0].value;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				});
+//				var add = document.getElementById('addcard');
+//				add.addEventListener('tap', function(event) {
+					i++;
+//					addv();
+				var tjsj = document.getElementById('tj');
+				tjsj.addEventListener('tap', function(event) {
+					var tjval=document.getElementById('tj').value;
+					var xsck=document.getElementById('xsck').text;
+					console.log(xsck);
+					mui.get(XPJFX_URL+'m/mXsAdd/save',{tjval:tjval,xsck:xsck},function(data){
+						mui.toast("提交成功");
+						location.reload();
+					});
+				});
+
 				var add = document.getElementById('addcard');
 				add.addEventListener('tap', function(event) {
-					i++;
-					addv();
+					mui.openWindow({
+      					url:'Goods.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'Goods.html',//子页面标志
+//    					styles:{
+//      					top:'45px',//子页面顶部位置
+//      					bottom:'0px',//子页面底部位置
+//    					},
+   					 })
+					
+//					i++;
+//					addv();
+					
+//				});
 				})
+				
+				var khxz = document.getElementById('khxz');
+				khxz.addEventListener('tap', function() {
+					mui.openWindow({
+      					url:'khxz.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'khxz.html',//子页面标志
+   					})
+				});
 			})
 			}else{
 			mui.ready(function(){
@@ -108,6 +185,14 @@
 //					i++;
 //					addv();
 					
+				});
+				
+				var khxz = document.getElementById('khxz');
+				khxz.addEventListener('tap', function(event) {
+					mui.openWindow({
+      					url:'khxz.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'khxz.html',//子页面标志
+   					})
 				});
 				
 				var Save=document.getElementById('Save');
@@ -149,53 +234,138 @@
 }
 				//扫描后回调
 			function hqgoods(r){
-				alert(r)
+				mui.get(XPJFX_URL+'m/mGoodsXz/goodsList',{goodsId:r},function(data){
+//				console.log(data);
+				addv(data);
+				});
 }
 			
+			//选择客户后回调方法
+			function hqkhxx(r){
+//				console.log(r);
+				mui.get(XPJFX_URL+'m/mKhxx/khxxlist',{storeId:r},function(data){
+//				console.log('sssssssss');storeId
+				document.getElementById("dianpu").style.display="";
+				document.getElementById("storeId").innerText="店铺:"+data[0].dpmc;
+				document.getElementById("dz").innerText="地址:"+data[0].dz;
+				document.getElementById("khxxid").innerText=data[0].id;
+				});
+			}
 			
 			
-			function  addv (){
+			
+			function  addv (data){
 							var table = document.body.querySelector('.carddiv');
 //					table.id="taid";
 					var dc=	document.createElement('div');
-//					var ss = "s"+"123";
+//					var sst = '555'
+					var sst = data[0].id+'';
+//					mui.toast(sst)
 					dc.className="mui-card";
-					dc.innerHTML='<div class="mui-card-content">'+
+					dc.innerHTML='<div class="mui-card-content" id="div'+data[0].id+'">'+
 					'<div class="mui-card-content-inner">'+
-						'<p><span>商品:</span><span style="color: #333;">龙一罐装混合果蔬脆</span></p>'+
-						'<p><span>规格:</span><span style="color: #333;">1*10*100</span></p>'+
-						'<p><span>单价:</span><span style="color: #333;">100/件</span></p>'+
-						'<p>'+
-						'<div class="mui-numbox">'+
-						 ' <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>'+
-						 ' <input   id = "i'+123+'"  class="mui-numbox-input" type="number" />'+
-						 ' <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>'+
-						'</div>'+
-					'	</p>'+
-						'	<p>'+
-					'	<div class="mui-numbox">'+
-						'  <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>'+
-						'  <input class="mui-numbox-input" type="number" />'+
-						 ' <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>'+
-					'	</div>'+
-					'	</p>'+
+						'<p><span>商品:</span><span style="color: #333;">'+data[0].name+'</span></p>'+
+						'<p><span>规格:</span><span style="color: #333;">'+data[0].spec.name+'</span></p>'+
+						'<p><span>单价:</span><span style="color: #333;">'+data[0].cbj+'</span></p>'+
+//						'<p><span>ID:</span><span style="color: #333;">in_'+data[0].id+'</span></p>'+
+						 '<p><span>售价:</span><input id="in_'+data[0].id+'" class="mui-numbox-input" type="number" style="width:20%;"/></p>'+
+						 '<p><span>实收:</span><input id="sjje'+data[0].id+'" class="mui-numbox-input" type="number" style="width:20%;"/></p>'+
+						  '<p><span>数量:</span><input  id = " '+data[0].id+' "  class="mui-numbox-input" type="number" style="width:20%;"/></p>'+
+						 
 				'</div>'+
-				'</div>'+
+				
 				 '<div class="mui-card-footer">'+
-					'<button id="ss" type="button" onclick="adt('+123+')"  class="mui-btn mui-btn-success mui-icon mui-icon-plus mui-right">保存'+i+'</button>'+
-					'<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">'+
+					'<button type="button" onclick="adt( '+' \' ' +data[0].id+' \' '+' )" class="mui-btn mui-btn-success mui-icon mui-icon-plus mui-right">保存</button>'+
+					'<button type="button" onclick="sc('+' \' ' +data[0].id+' \' '+' )"  class="mui-btn mui-btn-danger mui-btn-outlined">'+
 					'删除   '+
 					 '<span class="mui-icon mui-icon-trash"></span>'+
 		        '</button>'+
 //					'<a class="mui-card-link">删除</a>'+
+					'</div>'+
 				  '</div>';
 					table.appendChild(dc);
 			}
-			
-	function adt(x){
-		var i = 'i'+x;
-	var s=	document.getElementById(i).value;
-		alert(s)
+
+	function adt(s){
+//		console.log(s)
+		var nub=	document.getElementById(s).value;
+//		mui.toast(nub);
+		var i="in_";
+		var sh="sjje";
+		var sjje=sh.trim()+s.toString().trim();
+		var shje=document.getElementById(sjje).value;
+//	mui.toast(si);
+		var si=i.trim()+s.toString().trim();
+		var sj=	document.getElementById(si).value;
+		var tjval=document.getElementById("tj").value;
+//		mui.toast(sj);
+		var storeId=document.getElementById("khxxid").innerText;
+		console.log(storeId);
+		var ckxz=document.getElementById("xsck").text;
+		if(storeId==undefined || storeId==''){
+						mui.toast('请选择客户');
+						return false;
+					}
+		if(ckxz==undefined || ckxz==''){
+						mui.toast('请选择仓库');
+						return false;
+					}
+		if(sj==undefined || sj==''){
+						mui.toast('请选择售价');
+						return false;
+					}
+		if(shje==undefined || shje==''){
+						mui.toast('请选择实收');
+						return false;
+					}
+		if(nub==undefined || nub==''){
+						mui.toast('请选择数量');
+						return false;
+					}
+		mui.get(XPJFX_URL+'m/mXsAdd/list',{s:s,nub:nub,sj:sj,storeId:storeId,tjval:tjval,shje:shje},function(data){
+				document.getElementById("tjxs").style.display="inline";
+				document.getElementById("tj").value=data;
+				var hj=0;
+				
+				hj=parseFloat(hj)+parseFloat(sj);
+				document.getElementById("hj").innerText=hj;
+				mui.toast("保存成功");
+				});
+				
+	}
+	function sc(ss){
+		var i="div";
+		var si=i.trim()+ss.toString().trim();
+		var my=document.getElementById(si);
+		var tj=document.getElementById("tj").value;
+		if(tj.length<1&&tj==""){
+			my.remove();
+		}else{
+			var storeId=document.getElementById("khxxid").innerText;
+			mui.get(XPJFX_URL+'m/mXsAdd/delete',{ss:ss,tj:tj,storeId:storeId},function(data){
+//				console.log(data);
+				if(data=="false"){
+				my.remove();
+				}else{
+//					mui.toast(data);
+					var hj=document.getElementById("hj").innerText;
+					
+					hj=parseFloat(hj)-parseFloat(data);
+					document.getElementById("hj").innerText=hj;
+					my.remove();
+					console.log(my);
+					if(hj==0){
+						document.getElementById("tjxs").style.display="none";
+						document.getElementById("tj").value="";
+					}
+				}
+				
+			});
+		}
+		
+		
+//		mui.toast(s);
+//		s.remove();
 	}
 			
 			

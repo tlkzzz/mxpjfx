@@ -32,11 +32,7 @@
 			</div>
 			<div class="mui-input-row">	
 				<label>数量</label>
-			<div class="mui-numbox" data-numbox-min='1' 	style="margin-right: 55%;">
-					<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-					<input id="shul" class="mui-input-numbox" type="number" value="5" />
-					<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-				</div>
+				<input id='shul' type="text" class="mui-input-clear mui-input" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')" >
 			</div>
 			<div class="mui-input-row">
 					<label>成本价</label>
@@ -59,10 +55,99 @@
 	<script type="text/javascript">
 		mui.init({
 		});
+		if (mui.os.plus) {
+			mui.plusReady(function(){
+				mui.get(XPJFX_URL+'m/mRkGoods/ckxz',function(data){
+					var newArr = [];
+					var ckxzPicker = new mui.PopPicker();
+			 	for(j=0;j<data.length;j++){
+			 		console.log(data[j].id);
+			 		console.log(data[j].name);
+			 		newArr.push({value:data[j].id,text:data[j].name});
+			 	}
+			 	ckxzPicker.setData(newArr);
+			var ckxzPickerT = document.getElementById('yrck');
+				ckxzPickerT.addEventListener('tap', function(event) {
+						ckxzPicker.show(function(items) {
+							ckxzPickerT.value = items[0].text;
+							ckxzPickerT.text = items[0].value;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				});
+//				移除仓库选择
+// mui.toast('55555');
+mui.get(XPJFX_URL+'m/mRkGoods/ckxz',function(data){
+					var newArr = [];
+					var ckxzPicker = new mui.PopPicker();
+			 	for(j=0;j<data.length;j++){
+			 		console.log(data[j].id);
+			 		console.log(data[j].name);
+			 		newArr.push({value:data[j].id,text:data[j].name});
+			 	}
+			 	ckxzPicker.setData(newArr);
+			var ckxzPickerT = document.getElementById('ycck');
+				ckxzPickerT.addEventListener('tap', function(event) {
+						ckxzPicker.show(function(items) {
+							ckxzPickerT.value = items[0].text;
+							ckxzPickerT.text = items[0].value;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				});
+					
+		
+			document.getElementById('Save').addEventListener('tap', function() {
+					
+					var ycck=document.getElementById('ycck').text;
+					if(ycck==undefined || ycck==''){
+						mui.toast('请选择移出仓库');
+						return false;
+					}
+					var yrck=document.getElementById('yrck').text;
+					if(yrck==undefined || yrck==''){
+						mui.toast('请选择移入仓库');
+						return false;
+					}
+					var xzGoods=document.getElementById('xzGoods').text;
+					if(xzGoods==undefined || xzGoods==''){
+						mui.toast('请选择商品');
+						return false;
+					}
+					var shul=document.getElementById('shul').value;
+					if(shul==undefined || shul==''){
+							mui.toast('请填写数量');
+							return false;
+					}
+					var cbj=document.getElementById('cbj').value;
+						if(cbj==undefined || cbj==''){
+							mui.toast('请填写成本价');
+							return false;
+					}
+						
+					var param ={ycck,yrck,xzGoods,shul,cbj}
+					 mui.get(XPJFX_URL+'m/mYkGoods/list',param,function(data){
+						mui.toast('移库成功');
+						location.reload();
+					},'json'
+				);
+					
+			})
+			});
+			}else{
 		mui.ready(function() {
 //			移入仓库选择
-			var ckxzPicker = new mui.PopPicker();
-			 ckxzPicker.setData([{value:'4',text:'华北仓库'},{value:'5',text:'华中仓库'},{value:'6',text:'华南仓库'}]); 
+mui.get(XPJFX_URL+'m/mRkGoods/ckxz',function(data){
+					var newArr = [];
+					var ckxzPicker = new mui.PopPicker();
+			 	for(j=0;j<data.length;j++){
+			 		console.log(data[j].id);
+			 		console.log(data[j].name);
+			 		newArr.push({value:data[j].id,text:data[j].name});
+			 	}
+			 	ckxzPicker.setData(newArr);
 			var ckxzPickerT = document.getElementById('yrck');
 				ckxzPickerT.addEventListener('tap', function(event) {
 						ckxzPicker.show(function(items) {
@@ -71,19 +156,27 @@
 							//return false;
 						});
 					}, false);
+				});
 //				移除仓库选择
 // mui.toast('55555');
-			var gysxzPicker = new mui.PopPicker();
-			 gysxzPicker.setData([{value:'7',text:'Sunline'},{value:'8',text:'Dw'},{value:'9',text:'LV'}]); 
-			var gysxzPickerT = document.getElementById('ycck');
-				gysxzPickerT.addEventListener('tap', function(event) {
-						gysxzPicker.show(function(items) {
-							gysxzPickerT.value = items[0].text;
+mui.get(XPJFX_URL+'m/mRkGoods/ckxz',function(data){
+					var newArr = [];
+					var ckxzPicker = new mui.PopPicker();
+			 	for(j=0;j<data.length;j++){
+			 		console.log(data[j].id);
+			 		console.log(data[j].name);
+			 		newArr.push({value:data[j].id,text:data[j].name});
+			 	}
+			 	ckxzPicker.setData(newArr);
+			var ckxzPickerT = document.getElementById('ycck');
+				ckxzPickerT.addEventListener('tap', function(event) {
+						ckxzPicker.show(function(items) {
+							ckxzPickerT.value = items[0].text;
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});
 					}, false);
-					
+				});
 					
 		
 			document.getElementById('Save').addEventListener('tap', function() {
@@ -118,20 +211,25 @@
 					
 			})
 		});
+	}
+		function hqgoods(r){
+				console.log(r);
+				mui.get(XPJFX_URL+'m/mGoodsXz/goodsList',{goodsId:r},function(data){
+				console.log(data[0].name);
+				document.getElementById("xzGoods").value=data[0].name;
+				document.getElementById("xzGoods").text=data[0].id;
+				});
+}
 		document.getElementById("xzGoods").addEventListener('tap',function(){
 		mui.openWindow({
       					url:'Goods.html',//子页面HTML地址，支持本地地址和网络地址
       					id:'Goods.html',//子页面标志
-      					styles:{
-        					top:'45px',//子页面顶部位置
-        					bottom:'0px',//子页面底部位置
-      					},
+      					
    					 })
-   					 });
-   					 
-   					 function shangP(text){
-   					 	document.getElementById("xzGoods").value=text;
-   					 	mui.alert("1111");
-   					 }
+   					});
+// 					 function shangP(text){
+// 					 	document.getElementById("xzGoods").value=text;
+// 					 	mui.alert("1111");
+// 					 }
 	</script>
 </html>

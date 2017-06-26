@@ -98,11 +98,11 @@
 			<form id='login-form' class="mui-input-group">
 				<div class="mui-input-row">
 					<label>账号</label>
-					<input id='user' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+					<input id='user' type="text"  value="admin" class="mui-input-clear mui-input" placeholder="请输入账号">
 				</div>
 				<div class="mui-input-row">
 					<label>密码</label>
-					<input id='pass' type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+					<input id='pass' type="password" value="admin" class="mui-input-clear mui-input" placeholder="请输入密码">
 				</div>
 			</form>
 			<form class="mui-input-group">
@@ -125,8 +125,9 @@
 			</div>
 		</div>
 		<script src="js/mui.min.js"></script>
-		<script src="js/mui.enterfocus.js"></script>
-		<script src="js/app.js"></script>
+		<script src="js/config.js"></script>
+		<!--<script src="js/mui.enterfocus.js"></script>-->
+		<!--<script src="js/app.js"></script>-->
 		<script>
 			(function($, doc) {
 				$.init({
@@ -136,28 +137,32 @@
 				if(mui.os.plus){
 								$.plusReady(function() {
 //						$.ready(function() {
-						document.getElementById('login').addEventListener('tap', function() {
+						doc.getElementById('login').addEventListener('tap', function() {
 							var user = doc.getElementById('user').value;
 							var pass = doc.getElementById('pass').value;
-//							if(user.length==0 || user ==''){
-//								$.toast('请输入账号');
-//								return false;
-//							}
-//							if(pass.length==0 || pass==''){
-//								$.toast('请输入密码');
-//								return false;
-//							}
-
-//				 $.get('http://xpjfx.ngrok.cc/a/m/sys/user/infoData',function(data){
-//						console.log(data)
-//					},'json'
-//				);
-//						
-						//打开新页面
+							if(user.length==0 || user ==''){
+								$.toast('请输入账号');
+								return false;
+							}
+							if(pass.length==0 || pass==''){
+								$.toast('请输入密码');
+								return false;
+							}
+				 $.post(XPJFX_URL+'m/mLogin/login',{user:user,pass:pass},function(data){
+				 	console.log(data);
+				 	if(data){
+								//打开新页面
 						$.openWindow({
 						    url:'main.html',
 						    id:'main.html',
 						 });
+				 	}else{
+						$.toast('用户名或密码错误');
+								return false;
+						}
+					},'json'
+				);
+						
 					});
 					//返回退出
 					var backButtonPress = 0;
@@ -176,7 +181,7 @@
 				});	
 				}else{
 						$.ready(function() {
-						document.getElementById('login').addEventListener('tap', function() {
+						doc.getElementById('login').addEventListener('tap', function() {
 							var user = doc.getElementById('user').value;
 							var pass = doc.getElementById('pass').value;
 //							if(user.length==0 || user ==''){

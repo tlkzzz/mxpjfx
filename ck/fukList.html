@@ -21,13 +21,13 @@
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title" >选择客户</h1>
+			<a   class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">付款列表</h1>
 		</header>
 		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
   			<div class="mui-scroll">
     			<!--数据列表-->
-    			<ul class="mui-table-view">
+    			<ul class="mui-table-view mui-table-view-chevron">
     			</ul>
   			</div>
 		</div>
@@ -51,7 +51,7 @@
 			function pulldownRefresh() {
 				setTimeout(function() {
 					var count = 0;
-					mui.get(XPJFX_URL+'m/mKhxx/list',{fybs:count},function(data){
+					mui.get(XPJFX_URL+'m/mKhxx/fukList',{fybs:count},function(data){
 					var table = document.body.querySelector('.mui-table-view');
 //					var cells = document.body.querySelectorAll('.mui-table-view-cell');
 					for (var i = 0;i < data.length; i++) {
@@ -82,7 +82,7 @@
 			function pullupRefresh() {
 				
 				setTimeout(function() {
-					mui.get(XPJFX_URL+'m/mKhxx/list',{fybs:count},function(data){
+					mui.get(XPJFX_URL+'m/mKhxx/fukList',{fybs:count},function(data){
 					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
 					var table = document.body.querySelector('.mui-table-view');
 					var cells = document.body.querySelectorAll('.mui-table-view-cell');
@@ -109,43 +109,17 @@
 					mui('#pullrefresh').pullRefresh().pullupLoading();
 				});
 			}
-			/**
-			 * 上拉加载具体业务实现
-			 * <div class="mui-table">
-		                <div class="mui-table-cell mui-col-xs-10">
-		                    <h4 class="mui-ellipsis-2">信息化推进办公室张彦合同付款信息化推进办公室张彦合同付款信息化推进办公室张彦合同付款</h4>
-		                    <h5>申请人：李四</h5>
-		                    <p class="mui-h6 mui-ellipsis">Hi，李明明，申请交行信息卡，100元等你拿，李明明，申请交行信息卡，100元等你拿，</p>
-		                </div>
-		                <div class="mui-table-cell mui-col-xs-2 mui-text-right">
-		                    <span class="mui-h5">12:25</span>
-		                    
-		                </div>
-		            </div>
-			 */
 			
-			var ws=null,wo=null;
-			function adt(data){
-				ws=plus.webview.currentWebview();
-				wo=ws.opener();
-				console.log(data);
-				  wo.evalJS("hqkhxx('"+ data +"');");
-   						  ws.close();
-			}
 			function li_html(data){
 			var a =
-			'<a>'+
-			'<span style="display: none;">'+data.id+'</span>'+
+			'<a href="javascript:;">'+
             '<img class="mui-media-object mui-pull-left" src="../images/shuijiao.jpg">'+
-            '<div class="mui-media-body" style="float: left;margin-left: 1px;" >'+
-            '<p class="mui-ellipsis" style="float: left;">'+
-              '<b>店名：'+  data.dpmc+'<b><br>'+
-                '位置：'+data.dz+'</p>'+
-                '<button style="float: right;margin-left: 5px;border: 0px" type="button" onclick="adt( '+' \' ' +data.id+' \' '+' )" class="mui-btn mui-icon mui-icon-plus mui-right"></button>'+
-
-         
-         '</div>'+
-         //       '<div style="float: right;margin-top: 1px;margin-right: 1px;"><a oncilck="add( '+' \' ' +data.id+' \' '+' )" class="mui-icon mui-icon-plus"></a></div>'+
+            '<div class="mui-media-body">'+
+               data.paymentCode+
+                 '<p class="mui-ellipsis">日期：'+data.paymentDate+'</p>'+
+                   '<p class="mui-ellipsis">金额：'+data.je+'</p>'+
+                '<p class="mui-ellipsis">来往单位：'+data.travelUnit+'</p>'+
+            '</div>'+
         '</a>'
 			     return a;
 			}

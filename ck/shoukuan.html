@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
-		<meta charset="UTF-8">
-		<title>收款信息添加</title>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -11,21 +12,56 @@
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<link href="../css/mui.picker.css" rel="stylesheet" />
 		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+		<!--App自定义的css-->
+		<!--<link rel="stylesheet" type="text/css" href="../css/app.css" />-->
 	</head>
+
 	<body>
+
+		<style>
+			.mui-control-content {
+				background-color: white;
+				min-height: 315px;
+			}
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+		</style>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">收款信息添加</h1>
+			<h1 class="mui-title">供应商收付款</h1>
 		</header>
 		<div class="mui-content">
-			<form id='login-form' class="mui-input-group">
+			<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item" href="#item1mobile">
+				收款
+			</a>
+					<a class="mui-control-item" href="#item2mobile">
+				付款
+			</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<form id='login-form' class="mui-input-group">
 				<div class="mui-input-row">
-					<label>客户</label>
-					<input id='keh' type="text" class="mui-input-clear mui-input" readonly="true">
+					<label>供应商</label>
+					<input id='khxz' type="text" class="mui-input-clear mui-input" readonly="true">
 			</div>
 			<div class="mui-input-row">
 					<label>订单编号</label>
 					<input id='ddbh' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+					<label>来往账户</label>
+					<input id='lwzh' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+					<label>收款账户</label>
+					<input id='zh' type="text" class="mui-input-clear mui-input" readonly="true">
 			</div>
 			<div class="mui-input-row">
 					<label>费用类型</label>
@@ -33,84 +69,399 @@
 			</div>
 			<div class="mui-input-row">
 					<label>金额</label>
-					<input type="text" class="mui-input-clear mui-input">
-			</div>
-			<div class="mui-input-row">
-					<label>优惠金额</label>
-					<input type="text" class="mui-input-clear mui-input">
+					<input id="je" type="text" class="mui-input-clear mui-input">
 			</div>
 		</form>
 		<div class="mui-content-padded">
 				<button id='Save' class="mui-btn mui-btn-block mui-btn-primary">保存</button>
 			</div>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-content">
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label>供应商</label>
+					<input id='fkeh' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+					<label>订单编号</label>
+					<input id='fddbh' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+					<label>来往账户</label>
+					<input id='flwzh' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+					<label>付款账户</label>
+					<input id='fkzh' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+					<label>费用类型</label>
+					<input id='ffyType' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			<div class="mui-input-row">
+					<label>金额</label>
+					<input id="fje" type="text" class="mui-input-clear mui-input">
+			</div>
+		</form>
+		<div class="mui-content-padded">
+				<button id='fSave' class="mui-btn mui-btn-block mui-btn-primary">保存</button>
+			</div>
 	</div>
-	</body>
-	<script src="../js/mui.min.js"></script>
-		<!--<script src="../js/mui.picker.min.js"></script>-->
+							
+							</div>-->
+							
+						</div>
+
+					</div>
+				
+				</div>
+			</div>
+
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/config.js"></script>
 		<script src="../js/mui.picker.js"></script>
 		<script src="../js/mui.poppicker.js"></script>
-		<script src="../js/city.data.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-		mui.init({
-		});
-		mui.ready(function() {
-//		客户选择
-			var kehPicker = new mui.PopPicker();
-			 kehPicker.setData([{value:'4',text:'钻石王老五'},{value:'5',text:'极品小鲜肉'},{value:'6',text:'霸道富二代'}]); 
-			var kehPickerT = document.getElementById('keh');
-				kehPickerT.addEventListener('tap', function(event) {
-						kehPicker.show(function(items) {
-							kehPickerT.value = items[0].text;
-							//返回 false 可以阻止选择框的关闭
-							//return false;
-						});
-					}, false);
-//				订单编号选择
-// mui.toast('55555');
-			var ddbhPicker = new mui.PopPicker();
-			 ddbhPicker.setData([{value:'7',text:'Sunline'},{value:'8',text:'Dw'},{value:'9',text:'LV'}]); 
-			var ddbhPickerT = document.getElementById('ddbh');
-				ddbhPickerT.addEventListener('tap', function(event) {
-						ddbhPicker.show(function(items) {
-							ddbhPickerT.value = items[0].text;
-							//返回 false 可以阻止选择框的关闭
-							//return false;
-						});
-					}, false);
-					
-			var fyTypePicker = new mui.PopPicker();
-			 fyTypePicker.setData([{value:'1',text:'预收款'},{value:'2',text:'欠款'}]); 
-			var fyTypePickerT = document.getElementById('fyType');
-				fyTypePickerT.addEventListener('tap', function(event) {
-						fyTypePicker.show(function(items) {
-							fyTypePickerT.value = items[0].text;
-							//返回 false 可以阻止选择框的关闭
-							//return false;
-						});
-					}, false);
-					
-		
-			document.getElementById('Save').addEventListener('tap', function() {
-					
-					var keh=document.getElementById('keh').value;
-					if(keh.length==0 || keh==''){
-						mui.toast('请选择客户');
+		<script>
+			mui.init({
+				swipeBack: false
+			});
+			(function($) {
+				$('.mui-scroll-wrapper').scroll({
+					indicators: true //是否显示滚动条
+				});
+				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
+				$('.mui-input-group').on('change', 'input', function() {
+					if (this.checked) {
+						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
+						//force repaint
+						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
+					}
+				});
+			})(mui);
+			
+			if (mui.os.plus) {
+				mui.plusReady(function(){
+					var khxz = document.getElementById('khxz');
+				khxz.addEventListener('tap', function(event) {
+					mui.openWindow({
+      					url:'gysXz.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'gysXz.html',//子页面标志
+   					})
+				});
+				
+				var fkhxz = document.getElementById('fkeh');
+				fkhxz.addEventListener('tap', function(event) {
+					mui.openWindow({
+      					url:'fgysxz.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'fgysxz.html',//子页面标志
+   					})
+				});
+				
+				var ddbh = document.getElementById('ddbh');
+				ddbh.addEventListener('tap', function(event) {
+					mui.openWindow({
+      					url:'ddbh.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'ddbh.html',//子页面标志
+   					})
+				});
+				
+				var fddbh = document.getElementById('fddbh');
+				fddbh.addEventListener('tap', function(event) {
+					mui.openWindow({
+      					url:'fuddbh.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'fuddbh.html',//子页面标志
+   					})
+				});
+				
+				var Save = document.getElementById('Save');
+				Save.addEventListener('tap', function(event) {
+					var khxz=document.getElementById('khxz').TEXT;
+					var ddbh=document.getElementById('ddbh').text;
+					var lwzh=document.getElementById('lwzh').TEXT;
+					var zh=document.getElementById('zh').TEXT;
+					var fyType=document.getElementById('fyType').TEXT;
+					var je=document.getElementById('je').value;
+					if(khxz==undefined || khxz==''){
+						mui.toast('请选择供应商');
 						return false;
 					}
-					var ddbh=document.getElementById('ddbh').value;
-					if(ddbh.length==0 || ddbh==''){
+					if(ddbh==undefined || ddbh==''){
 						mui.toast('请选择订单编号');
 						return false;
 					}
-					var fyType=document.getElementById('fyType').value;
-					if(fyType.length==0 || fyType==''){
+					if(lwzh==undefined || lwzh==''){
+						mui.toast('请选择来往账户');
+						return false;
+					}
+					if(zh==undefined || zh==''){
+						mui.toast('请选择收款账户');
+						return false;
+					}
+					if(fyType==undefined || fyType==''){
 						mui.toast('请选择费用类型');
 						return false;
 					}
-					mui.toast('付款信息添加成功');
-			})
-		});
-		
-	</script>
+					if(je==undefined || je==''){
+						mui.toast('请填写金额');
+						return false;
+					}
+					
+					mui.get(XPJFX_URL+'m/mGysSf/gysskSave',{khxz:khxz,ddbh:ddbh,zh:zh,lwzh:lwzh,fyType:fyType,je:je},function(data){
+						mui.toast("提交成功");
+						location.reload();
+					});
+				});
+				var fSave = document.getElementById('fSave');
+				fSave.addEventListener('tap', function(event) {
+					var fkeh=document.getElementById('fkeh').TEXT;
+					var fddbh=document.getElementById('fddbh').text;
+					var flwzh=document.getElementById('flwzh').TEXT;
+					var fkzh=document.getElementById('fkzh').TEXT;
+					var ffyType=document.getElementById('ffyType').TEXT;
+					var fje=document.getElementById('fje').value;
+					if(fkeh==undefined || fkeh==''){
+						mui.toast('请选择供应商');
+						return false;
+					}
+					if(fddbh==undefined || fddbh==''){
+						mui.toast('请选择订单编号');
+						return false;
+					}
+					if(flwzh==undefined || flwzh==''){
+						mui.toast('请选择来往账户');
+						return false;
+					}
+					if(fkzh==undefined || fkzh==''){
+						mui.toast('请选择付款账户');
+						return false;
+					}
+					if(ffyType==undefined || ffyType==''){
+						mui.toast('请选择费用类型');
+						return false;
+					}
+					if(fje==undefined || fje==''){
+						mui.toast('请填写金额');
+						return false;
+					}
+					
+					mui.get(XPJFX_URL+'m/mGysSf/gysfkSave',{fkeh:fkeh,fddbh:fddbh,flwzh:flwzh,fkzh:fkzh,ffyType:ffyType,fje:fje},function(data){
+						mui.toast("提交成功");
+						location.reload();
+					});
+				});
+				});
+				
+				var fyTypePicker = new mui.PopPicker();
+			 fyTypePicker.setData([
+			 {value:'2',text:'出库录单'},
+			 {value:'4',text:'报废录单'},
+			 {value:'5',text:'退货录单'},
+			 {value:'3',text:'其它出库'},
+			 {value:'1',text:'其他入库'},
+			 {value:'6',text:'现金费用单'},
+			 {value:'7',text:'一般费用单'},
+			 {value:'8',text:'其他费用单'},
+			 {value:'0',text:'临时采购入库'},
+			 ]);
+			var fyTypePickerButton = document.getElementById('fyType');
+				fyTypePickerButton.addEventListener('tap', function(event) {
+						fyTypePicker.show(function(items) {
+							fyTypePickerButton.value = items[0].text;
+							fyTypePickerButton.TEXT=items[0].value;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+					var ffyTypePicker = new mui.PopPicker();
+			 ffyTypePicker.setData([
+			 {value:'2',text:'出库录单'},
+			 {value:'4',text:'报废录单'},
+			 {value:'5',text:'退货录单'},
+			 {value:'3',text:'其它出库'},
+			 {value:'1',text:'其他入库'},
+			 {value:'6',text:'现金费用单'},
+			 {value:'7',text:'一般费用单'},
+			 {value:'8',text:'其他费用单'},
+			 {value:'0',text:'临时采购入库'},
+			 ]);
+			var ffyTypePickerButton = document.getElementById('ffyType');
+				ffyTypePickerButton.addEventListener('tap', function(event) {
+						ffyTypePicker.show(function(items) {
+							ffyTypePickerButton.value = items[0].text;
+							ffyTypePickerButton.TEXT=items[0].value;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+					//账户选择
+					mui.get(XPJFX_URL+'m/mkhShouk/zhanghuXz',function(data){
+					var newArr = [];
+					var ckxzPicker = new mui.PopPicker();
+			 	for(j=0;j<data.length;j++){
+			 		console.log(data[j].bankCode);
+			 		console.log(data[j].name);
+			 		newArr.push({value:data[j].bankCode,text:data[j].name});
+			 	}
+			 	ckxzPicker.setData(newArr);
+			var ckxzPickerT = document.getElementById('zh');
+				ckxzPickerT.addEventListener('tap', function(event) {
+						ckxzPicker.show(function(items) {
+							ckxzPickerT.value = items[0].text;
+							ckxzPickerT.TEXT = items[0].value;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					});
+					
+					//来往账户选择
+					mui.get(XPJFX_URL+'m/mkhShouk/zhanghuXz',function(data){
+					var newArr = [];
+					var lwzhPicker = new mui.PopPicker();
+			 	for(j=0;j<data.length;j++){
+			 		console.log(data[j].bankCode);
+			 		console.log(data[j].name);
+			 		newArr.push({value:data[j].bankCode,text:data[j].name});
+			 	}
+			 	lwzhPicker.setData(newArr);
+			var lwzhPickerT = document.getElementById('lwzh');
+				lwzhPickerT.addEventListener('tap', function(event) {
+						lwzhPicker.show(function(items) {
+							lwzhPickerT.value = items[0].text;
+							lwzhPickerT.TEXT = items[0].value;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					});
+					
+					//付款来往账户选择
+					mui.get(XPJFX_URL+'m/mkhShouk/zhanghuXz',function(data){
+					var newArr = [];
+					var flwzhPicker = new mui.PopPicker();
+			 	for(j=0;j<data.length;j++){
+			 		console.log(data[j].bankCode);
+			 		console.log(data[j].name);
+			 		newArr.push({value:data[j].bankCode,text:data[j].name});
+			 	}
+			 	flwzhPicker.setData(newArr);
+			var flwzhPickerT = document.getElementById('flwzh');
+				flwzhPickerT.addEventListener('tap', function(event) {
+						flwzhPicker.show(function(items) {
+							flwzhPickerT.value = items[0].text;
+							flwzhPickerT.TEXT = items[0].value;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					});
+					
+					//付款账户选择
+					mui.get(XPJFX_URL+'m/mkhShouk/zhanghuXz',function(data){
+					var newArr = [];
+					var fkzhPicker = new mui.PopPicker();
+			 	for(j=0;j<data.length;j++){
+			 		console.log(data[j].bankCode);
+			 		console.log(data[j].name);
+			 		newArr.push({value:data[j].bankCode,text:data[j].name});
+			 	}
+			 	fkzhPicker.setData(newArr);
+			var fkzhPickerT = document.getElementById('fkzh');
+				fkzhPickerT.addEventListener('tap', function(event) {
+						fkzhPicker.show(function(items) {
+							fkzhPickerT.value = items[0].text;
+							fkzhPickerT.TEXT = items[0].value;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					});
+			}else{
+				mui.ready(function(){
+					var khxz = document.getElementById('khxz');
+				khxz.addEventListener('tap', function(event) {
+					mui.openWindow({
+      					url:'khxz.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'khxz.html',//子页面标志
+   					})
+				});
+				});
+				//费用类型选择
+				var fyTypePicker = new mui.PopPicker();
+			 fyTypePicker.setData([
+			 {value:'2',text:'出库录单'},
+			 {value:'4',text:'报废录单'},
+			 {value:'5',text:'退货录单'},
+			 {value:'3',text:'其它出库'},
+			 {value:'1',text:'其他入库'},
+			 {value:'7',text:'一般费用单'},
+			 {value:'6',text:'现金费用单'},
+			 {value:'8',text:'其他费用单'},
+			 {value:'0',text:'临时采购入库'},
+			 ]);
+			var fyTypePickerButton = document.getElementById('fyType');
+				fyTypePickerButton.addEventListener('tap', function(event) {
+						fyTypePicker.show(function(items) {
+							fyTypePickerButton.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					//账户选择
+					mui.get(XPJFX_URL+'m/mkhShouk/zhanghuXz',function(data){
+					var newArr = [];
+					var ckxzPicker = new mui.PopPicker();
+			 	for(j=0;j<data.length;j++){
+			 		console.log(data[j].id);
+			 		console.log(data[j].name);
+			 		newArr.push({value:data[j].id,text:data[j].name});
+			 	}
+			 	ckxzPicker.setData(newArr);
+			var ckxzPickerT = document.getElementById('zh');
+				ckxzPickerT.addEventListener('tap', function(event) {
+						ckxzPicker.show(function(items) {
+							ckxzPickerT.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					});
+					
+				
+			}
+			
+			function regys(r){
+//				console.log(r);
+				mui.get(XPJFX_URL+'m/mGysSf/gysList',{storeId:r},function(data){
+				document.getElementById("khxz").value=data[0].name;
+				document.getElementById("khxz").TEXT=r;
+				});
+			}
+			function fgysxz(r){
+//				console.log(r);
+				mui.get(XPJFX_URL+'m/mGysSf/gysList',{storeId:r},function(data){
+				document.getElementById("fkeh").value=data[0].name;
+				document.getElementById("fkeh").TEXT=r;
+				});
+			}
+			function hqddbh(r,s){
+				console.log(s);
+				document.getElementById("ddbh").text=r;
+				document.getElementById("ddbh").value=s;
+			}
+			function fuddbh(r,s){
+				document.getElementById("fddbh").text=r;
+				document.getElementById("fddbh").value=s;
+			}
+		</script>
+
+	</body>
+
 </html>

@@ -29,6 +29,7 @@
 		</div>
 	</body>
 	<script src="../js/mui.min.js"></script>
+	<script src="../js/config.js"></script>
 	<script type="text/javascript">
 		mui.init({
 				pullRefresh: {
@@ -42,45 +43,43 @@
 					}
 				}
 			});
+			var count = 0;
 			function pulldownRefresh() {
+				var count = 0;
 				setTimeout(function() {
+					mui.get(XPJFX_URL+'m/mRkGoods/rukjl',{fybs:count},function(data){
+					console.log(data[0]);
 					var table = document.body.querySelector('.mui-table-view');
 					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for (var i = cells.length, len = i + 3; i < len; i++) {
+					for (var i = 0;i < data.length; i++) {
 						var li = document.createElement('li');
 						li.className = 'mui-table-view-cell';
-						li.innerHTML = li_html();
+						li.innerHTML = li_html(data[i]);
 						//下拉刷新，新纪录插到最前面；
 						table.insertBefore(li, table.firstChild);
 					}
 					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+					});
 				}, 1500);
 			}
-			var count = 0;
-			/**
-			 * 上拉加载具体业务实现
-			 * <li class="mui-table-view-cell mui-media">
-        <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../images/shuijiao.jpg">
-            <div class="mui-media-body">
-                幸福
-                <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-            </div>
-        </a>
-    </li>
-			 */
+		
 			function pullupRefresh() {
+				
 				setTimeout(function() {
+					mui.get(XPJFX_URL+'m/mRkGoods/rukjl',{fybs:count},function(data){
+					console.log(data);
 					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
 					var table = document.body.querySelector('.mui-table-view');
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for (var i = cells.length, len = i + 20; i < len; i++) {
+//					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					for (var i = 0;i < data.length; i++) {
 						var li = document.createElement('li');
 						var img = document.createElement('img');
 						li.className = 'mui-table-view-cell';
-						li.innerHTML = li_html();
+						li.innerHTML = li_html(data[i]);
 						table.appendChild(li);
 					}
+					count=count+10;
+					});
 				}, 1500);
 			}
 			if (mui.os.plus) {
@@ -88,40 +87,30 @@
 					setTimeout(function() {
 						mui('#pullrefresh').pullRefresh().pullupLoading();
 					}, 1000);
-
 				});
 			} else {
 				mui.ready(function() {
 					mui('#pullrefresh').pullRefresh().pullupLoading();
 				});
 			}
-			/**
-			 * 上拉加载具体业务实现
-			 * <div class="mui-table">
-		                <div class="mui-table-cell mui-col-xs-10">
-		                    <h4 class="mui-ellipsis-2">信息化推进办公室张彦合同付款信息化推进办公室张彦合同付款信息化推进办公室张彦合同付款</h4>
-		                    <h5>申请人：李四</h5>
-		                    <p class="mui-h6 mui-ellipsis">Hi，李明明，申请交行信息卡，100元等你拿，李明明，申请交行信息卡，100元等你拿，</p>
-		                </div>
-		                <div class="mui-table-cell mui-col-xs-2 mui-text-right">
-		                    <span class="mui-h5">12:25</span>
-		                    
-		                </div>
-		            </div>
-			 */
-			function li_html(){
+			
+			function li_html(data){
 			var a =
 			'<div class="mui-table">'+
             '<div class="mui-table-cell mui-col-xs-10">'+
-            '<h4 class="mui-ellipsis-2">'+
-                '辣翻天入库信息'+
+            '<h4 class="mui-ellipsis-2">'+data.goods.name+
+                '入库信息'+
             '</h4>'+
             '<h5>'+
-            '仓库：华北仓库'+
+            '仓库：'+data.house.name+
             '</h5>'+
-            '<p class="mui-h6 mui-ellipsis">规格：1*9</p>'+
+            '<p class="mui-h6 mui-ellipsis">规格：'+data.goods.spec.name+'</p>'+
+            '<p class="mui-h6 mui-ellipsis">入库数量：'+data.rknub+'</p>'+
+             '<p class="mui-h6 mui-ellipsis">入库后数量：'+data.rkhnub+'</p>'+
+             '<p class="mui-h6 mui-ellipsis">入库前成本价：'+data.rkqcbj+'</p>'+
+             '<p class="mui-h6 mui-ellipsis">入库后成本价：'+data.rkhcbj+'</p>'+
             '</div>'+
-        	'<div class="mui-table-cell mui-col-xs-2 mui-text-right">'
+        	'<div class="mui-table-cell mui-col-xs-2 mui-text-right">'+
         	'<span class="mui-h5">12:25</span>'+
         	'</div>'+
         	'</div>'

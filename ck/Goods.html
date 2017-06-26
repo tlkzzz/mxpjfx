@@ -5,13 +5,11 @@
 		<meta charset="utf-8">
 		<title>Hello MUI</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 		<!--标准mui.css-->
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<!--App自定义的css-->
-		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../css/app.css" />-->
 		<style>
 			.mui-row.mui-fullscreen>[class*="mui-col-"] {
 				height: 100%;
@@ -54,7 +52,7 @@
 			</div>
 		</div>
 		<script src="../js/mui.min.js"></script>
-				<script src="../js/common.js"></script>
+				<!--<script src="../js/common.js"></script>-->
 		<script src="../js/config.js"></script>
 		<script>
 			var ws=null,wo=null;
@@ -63,13 +61,10 @@
 				
 			});
 			if (mui.os.plus) {
-				mui.plusReady(function(){
+						mui.plusReady(function() {
 					ws=plus.webview.currentWebview();
 					wo=ws.opener();
-			})
-			}else{
-			mui.ready(function() {
-				
+//mui.toast('555')
 				mui.get(XPJFX_URL+'m/mGoodsXz/list',function(data){
 					
 //					console.log(data.list[0].gclass.id);
@@ -110,7 +105,8 @@
 						var g =event.target.children[0].innerText;
 					    console.log(g)
 					    wo.evalJS("hqgoods('"+ g +"');");
- 					   back();
+// 						  ws.back();
+   						  ws.close();
 					})
 				
 				
@@ -197,40 +193,17 @@
 					scrollTo(this.getAttribute('data-index'));
 					return false;
 				});
-				
-				
-				
 			})();
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 					},'json'
 				);
-				
-				
 			});
+			}else{
+				
+				
+				
+				
 			}
-			
+
 			
 		</script>
 

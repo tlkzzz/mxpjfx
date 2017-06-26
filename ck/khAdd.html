@@ -11,6 +11,8 @@
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<link href="../css/mui.picker.css" rel="stylesheet" />
 		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+		<link href="../css/commons.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" />
 		<!--App自定义的css-->
 		<!--<link rel="stylesheet" type="text/css" href="../css/app.css"/>-->
 		
@@ -27,10 +29,12 @@
 						<a class="mui-navigate-right" href="#">基本信息</a>
 						<div class="mui-collapse-content">
 							<form class="mui-input-group">
-								<div class="mui-input-row">
-									<label>门店图片</label>
-									<input type="text" placeholder="图片">
-								</div>
+				<div class="z_photo upimg-div clear" id="mdtp">
+		               	 <!--<section class="z_file fl">-->
+		               	 	<img src="../img/a11.png"  id="ddddd">
+		               	 	<!--<input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple />-->
+		               	 <!--</section>-->
+		         </div>
 								<div class="mui-input-row">
 									<label>客户分类</label>
 									<input id='khfl' type="text" class="mui-input-clear mui-input" readonly="true">
@@ -44,23 +48,23 @@
 								
 								<div class="mui-input-row">
 									<label>详细地址</label>
-									<input type="text">
+									<input type="text" id="xxdz">
 								</div>
 								<div class="mui-input-row">
 									<label>采购员</label>
-									<input type="text">
+									<input type="text" id="cgy">
 								</div>
 								<div class="mui-input-row">
 									<label>店铺名称</label>
-									<input type="text">
+									<input type="text" id="dpmc">
 								</div>
 								<div class="mui-input-row">
 									<label>客户名称</label>
-									<input type="text">
+									<input type="text" id="khmc">
 								</div>
 								<div class="mui-input-row">
 									<label>手机号码</label>
-									<input type="text">
+									<input type="text" id="sjhm">
 								</div>
 								</form>
 						</div>
@@ -71,59 +75,66 @@
 							<form class="mui-input-group">
 								<div class="mui-input-row">
 									<label>采购员联系方式</label>
-									<input type="text">
+									<input type="text" id="cgylxfs">
 								</div>
 								<div class="mui-input-row">
 									<label>邮编</label>
-									<input type="text">
+									<input type="text" id="yb">
 								</div>
 								<div class="mui-input-row">
 									<label>微信</label>
-									<input type="text">
+									<input type="text" id="wx">
 								</div>
 								<div class="mui-input-row">
 									<label>QQ</label>
-									<input type="text">
+									<input type="text" id="qq">
 								</div>
 								<div class="mui-input-row">
 									<label>回执周期</label>
-									<input type="text">
+									<input type="text" id="hzzq">
 								</div>
 								<div class="mui-input-row">
 									<label>额度</label>
-									<input type="text">
+									<input type="text" id="ed">
 								</div>
 								<div class="mui-input-row">
 									<label>销售渠道</label>
-									<input type="text">
+									<input type="text" id="xsqd">
 								</div>
 								<div class="mui-input-row">
 									<label>进货渠道</label>
-									<input type="text">
+									<input type="text" id="jhqd">
 								</div>
 								<div class="mui-input-row">
 									<label>电话</label>
-									<input type="text">
+									<input type="text" id="dh">
 								</div>
 								<div class="mui-input-row">
 									<label>电子邮件</label>
-									<input type="text">
+									<input type="text" id="dzyj">
 								</div>
 								<div class="mui-input-row">
 									<label>积分系数</label>
-									<input type="text">
+									<input type="text" id="jfxs">
 								</div>
 								<div class="mui-input-row">
 									<label>开户行名称</label>
-									<input type="text">
+									<input type="text" id="khhmc">
 								</div>
 								<div class="mui-input-row">
 									<label>开户行账号</label>
-									<input type="text">
+									<input type="text" id="khhzh">
 								</div>
 								<div class="mui-input-row">
 									<label>开户人</label>
-									<input type="text">
+									<input type="text" id="khr">
+								</div>
+								<div>
+									<div id="allmap" class="mui-input-row">
+    <!--<input type="button" id="ddtt" value="地图">-->
+    	<button id='ddtt' class="mui-btn mui-btn-block mui-btn-primary">地图</button>
+</div>
+									
 								</div>
 								</form>
 						</div>
@@ -134,16 +145,137 @@
 				<button id='Save' class="mui-btn mui-btn-block mui-btn-primary">保存</button>
 			</div>
 		</div>
+		<script src="../js/config.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.js"></script>
 		<script src="../js/mui.poppicker.js"></script>
 		<script src="../js/city.data.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=EVunsrA5meplA36r4oED7mwXdpYqzXiR"></script>-->
+    <!--<script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>-->
 		<script>
+			
 			mui.init({
 				swipeBack:true //启用右滑关闭功能
 			});
+			var j;
+			if (mui.os.plus) {
+				mui.plusReady(function(){
+					document.getElementById('ddtt').addEventListener('tap', function() { 
+						mui.openWindow({
+							id: 'ck/ddtt',
+							url: 'ck/ddtt.html',
+					})
+					});
+					
+					
+					document.getElementById('ddddd').addEventListener('tap', function() { 
+            if (mui.os.plus) { 
+                var a = [{ 
+                    title: "拍照" 
+                }, { 
+                    title: "从手机相册选择" 
+                }]; 
+                plus.nativeUI.actionSheet({ 
+                    title: "添加门店图片", 
+                    cancel: "取消", 
+                    buttons: a 
+                }, function(b) { /*actionSheet 按钮点击事件*/ 
+                    switch (b.index) { 
+                        case 0: 
+                            break; 
+                        case 1: 
+                            getImage(); /*拍照*/ 
+                            break; 
+                        case 2: 
+                            galleryImg();/*打开相册*/ 
+                            break; 
+                        default: 
+                            break; 
+                    } 
+                }) 
+            } 
+        }, false); 
+					
+					
+					
+					
+					
+					
+					
+					var cityPicker3 = new mui.PopPicker({
+						layer: 3
+					});
+					cityPicker3.setData(cityData3);
+					var showCityPickerButton = document.getElementById('showCityPicker3');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker3.show(function(items) {
+							showCityPickerButton.value =  (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+					//仓库选择
+					mui.get(XPJFX_URL+'m/mStore/list',function(data){
+					var newArr = [];
+					var ckxzPicker = new mui.PopPicker();
+			 	for(j=0;j<data.length;j++){
+			 		console.log(data[j].id);
+			 		console.log(data[j].name);
+			 		newArr.push({value:data[j].id,text:data[j].name});
+			 	}
+			 	ckxzPicker.setData(newArr);
+			var ckxzPickerT = document.getElementById('khfl');
+				ckxzPickerT.addEventListener('tap', function(event) {
+						ckxzPicker.show(function(items) {
+							ckxzPickerT.value = items[0].text;
+							ckxzPickerT.TEXT = items[0].value;
+						});
+					}, false);
+				});
+					
+				});
+				
+				//保存
+				document.getElementById('Save').addEventListener('tap', function(event) {
+					var mdtp=document.getElementById('ddddd').src;
+					console.log(mdtp);
+					var khfl=document.getElementById('khfl').text;
+					if(khfl==undefined || khfl==''){
+						mui.toast('请选择客户分类');
+						return false;
+					}
+					var qy=document.getElementById('showCityPicker3').value;
+					var xxdz=document.getElementById('xxdz').value;
+					var cgy=document.getElementById('cgy').value;
+					var dpmc=document.getElementById('dpmc').value;
+					var khmc=document.getElementById('khmc').value;
+					var sjhm=document.getElementById('sjhm').value;
+					var cgylxfs=document.getElementById('cgylxfs').value;
+					var yb=document.getElementById('yb').value;
+					var wx=document.getElementById('wx').value;
+					var qq=document.getElementById('qq').value;
+					var hzzq=document.getElementById('hzzq').value;
+					var ed=document.getElementById('ed').value;
+					var xsqd=document.getElementById('xsqd').value;
+					var jhqd=document.getElementById('jhqd').value;
+					var dh=document.getElementById('dh').value;
+					var dzyj=document.getElementById('dzyj').value;
+					var jfxs=document.getElementById('jfxs').value;
+					var khhmc=document.getElementById('khhmc').value;
+					var khhzh=document.getElementById('khhzh').value;
+					var khr=document.getElementById('khr').value;
+					mui.get(XPJFX_URL+'m/mStore/save',{mdtp:mdtp,khfl:khfl,qy:qy,xxdz:xxdz,
+					cgy:cgy,dpmc:dpmc,khmc:khmc,sjhm:sjhm,cgylxfs:cgylxfs,yb:yb,wx:wx,qq:qq,
+					hzzq:hzzq,ed:ed,xsqd:xsqd,jhqd:jhqd,dh:dh,dzyj:dzyj,jfxs:jfxs,khhmc:khhmc,khhzh:khhzh,khr:khr
+					},function(data){
+						mui.toast("保存成功");
+					});
+				});
+			}else{
 			mui.ready(function() {
+				
 //			移入仓库选择
 			var khflPicker = new mui.PopPicker();
 			 khflPicker.setData([{value:'4',text:'小型客户'},{value:'5',text:'中型客户'},{value:'6',text:'大型客户'}]); 
@@ -169,6 +301,125 @@
 						});
 					}, false);
 				})
+			}
+			
+			function getImage() { 
+            var c = plus.camera.getCamera(); 
+            c.captureImage(function(e) { 
+//          	alert(e);
+                plus.io.resolveLocalFileSystemURL(e, function(entry) { 
+                    var s = entry.toLocalURL() + "?version=" + new Date().getTime(); 
+//                  alert(s);
+                    uploadHead(s); /*上传图片*/ 
+                }, function(e) { 
+                    console.log("读取拍照文件错误：" + e.message); 
+                }); 
+            }, function(s) { 
+                console.log("error" + s); 
+            }, { 
+                filename: "_doc/head.png" 
+            }) 
+        } 
+        
+        function galleryImg() { 
+            plus.gallery.pick(function(a) { 
+                plus.io.resolveLocalFileSystemURL(a, function(entry) { 
+                    plus.io.resolveLocalFileSystemURL("_doc/", function(root) { 
+                        root.getFile("head.png", {}, function(file) { 
+                            //文件已存在 
+                            file.remove(function() { 
+                                console.log("file remove success"); 
+                                entry.copyTo(root, 'head.png', function(e) { 
+                                        var e = e.fullPath + "?version=" + new Date().getTime(); 
+                                        uploadHead(e); /*上传图片*/ 
+                                        //变更大图预览的src 
+                                        //目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现 
+                                    }, 
+                                    function(e) { 
+                                        console.log('copy image fail:' + e.message); 
+                                    }); 
+                            }, function() { 
+                                console.log("delete image fail:" + e.message); 
+                            }); 
+                        }, function() { 
+                            //文件不存在 
+                            entry.copyTo(root, 'head.png', function(e) { 
+                                    var path = e.fullPath + "?version=" + new Date().getTime(); 
+                                    uploadHead(path); /*上传图片*/ 
+                                }, 
+                                function(e) { 
+                                    console.log('copy image fail:' + e.message); 
+                                }); 
+                        }); 
+                    }, function(e) { 
+                        console.log("get _www folder fail"); 
+                    }) 
+                }, function(e) { 
+                    console.log("读取拍照文件错误：" + e.message); 
+                }); 
+            }, function(a) {}, { 
+                filter: "image" 
+            }) 
+        }; 
+        
+        function uploadHead(imgPath) { 
+        	var mainImage = new Image(); 
+//      	alert(imgPath);
+            console.log("imgPath = " + imgPath); 
+            mainImage.src = imgPath; 
+            mainImage.style.width = "60px"; 
+            mainImage.style.height = "60px"; 
+            var image = new Image(); 
+            image.src = imgPath; 
+//          alert( "22");
+            image.onload = function() { 
+//          	alert( "11");
+                var imgData = getBase64Image(image); 
+                /*在这里调用上传接口*/ 
+                mui.ajax(XPJFX_URL+'m/mStore/tpAdd', { 
+                    data: {imgData:imgData}, 
+                    dataType: 'text', 
+                    type: 'post', 
+                    timeout: 10000, 
+                    success: function(data) { 
+                    	console.log(data);
+                    	var mainImage= document.getElementById("ddddd");
+//                  	path="http://192.168.0.150:8080"+data;
+                    	mainImage.src=data;
+
+                        console.log('上传成功'); 
+                    }, 
+                    error: function(xhr, type, errorThrown) { 
+                        mui.toast('网络异常，请稍后再试！'); 
+                    } 
+                }); 
+            } 
+    } 
+        //将图片压缩转成base64 
+        function getBase64Image(img) { 
+            var canvas = document.createElement("canvas"); 
+            var width = img.width; 
+            var height = img.height; 
+            // calculate the width and height, constraining the proportions 
+            if (width > height) { 
+                if (width > 100) { 
+                    height = Math.round(height *= 100 / width); 
+                    width = 100; 
+                } 
+            } else { 
+                if (height > 100) { 
+                    width = Math.round(width *= 100 / height); 
+                    height = 100; 
+                } 
+            } 
+            canvas.width = width;   /*设置新的图片的宽度*/ 
+            canvas.height = height; /*设置新的图片的长度*/ 
+            var ctx = canvas.getContext("2d"); 
+            ctx.drawImage(img, 0, 0, width, height); /*绘图*/ 
+            var dataURL = canvas.toDataURL("image/png", 0.8); 
+            return dataURL.replace("data:image/png;base64,", ""); 
+        }
 		</script>
+		
 	</body>
 </html>

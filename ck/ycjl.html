@@ -29,6 +29,7 @@
 		</div>
 	</body>
 	<script src="../js/mui.min.js"></script>
+	<script src="../js/config.js"></script>
 	<script type="text/javascript">
 		mui.init({
 				pullRefresh: {
@@ -42,21 +43,25 @@
 					}
 				}
 			});
+			var count = 0;
 			function pulldownRefresh() {
 				setTimeout(function() {
+					var count = 0;
+					mui.get(XPJFX_URL+'m/mYkGoods/yikjl',{fybs:count},function(data){
 					var table = document.body.querySelector('.mui-table-view');
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for (var i = cells.length, len = i + 3; i < len; i++) {
+//					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					for (var i = 0;i < data.length; i++) {
 						var li = document.createElement('li');
 						li.className = 'mui-table-view-cell';
-						li.innerHTML = li_html();
+						li.innerHTML = li_html(data[i]);
 						//下拉刷新，新纪录插到最前面；
 						table.insertBefore(li, table.firstChild);
 					}
 					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
 				}, 1500);
+				});
 			}
-			var count = 0;
+			
 			/**
 			 * 上拉加载具体业务实现
 			 * <li class="mui-table-view-cell mui-media">
@@ -69,18 +74,23 @@
         </a>
     </li>
 			 */
+//			var count=0;
 			function pullupRefresh() {
+				
 				setTimeout(function() {
+					mui.get(XPJFX_URL+'m/mYkGoods/yikjl',{fybs:count},function(data){
 					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
 					var table = document.body.querySelector('.mui-table-view');
 					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for (var i = cells.length, len = i + 20; i < len; i++) {
+					for (var i = 0;i < data.length; i++) {
 						var li = document.createElement('li');
 						var img = document.createElement('img');
 						li.className = 'mui-table-view-cell';
-						li.innerHTML = li_html();
+						li.innerHTML = li_html(data[i]);
 						table.appendChild(li);
 					}
+					});
+					count=count+10;
 				}, 1500);
 			}
 			if (mui.os.plus) {
@@ -109,17 +119,22 @@
 		                </div>
 		            </div>
 			 */
-			function li_html(){
+			function li_html(data){
 			var a =
 			'<div class="mui-table">'+
             '<div class="mui-table-cell mui-col-xs-10">'+
-            '<h4 class="mui-ellipsis-2">'+
-                '辣翻天入库信息'+
+            '<h4 class="mui-ellipsis-2">'+data.goods.name+
+                '移库库信息'+
             '</h4>'+
             '<h5>'+
-            '移出仓库：华北仓库;移入仓库：华南仓库'+
+            '移出仓库：'+data.startHouse.name+
             '</h5>'+
-            '<p class="mui-h6 mui-ellipsis">规格：1*9</p>'+
+            '<h5>'+
+            '移入仓库：'+data.endHouse.name+
+            '</h5>'+
+            '<p class="mui-h6 mui-ellipsis">规格：'+data.goods.spec.name+'</p>'+
+             '<p class="mui-h6 mui-ellipsis">移库后成本价：'+data.cbj+'</p>'+
+             '<p class="mui-h6 mui-ellipsis">移库后销售价：'+data.xsj+'</p>'+
             '</div>'+
         	'<div class="mui-table-cell mui-col-xs-2 mui-text-right">'
         	'<span class="mui-h5">12:25</span>'+
