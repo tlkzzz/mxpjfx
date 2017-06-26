@@ -51,11 +51,11 @@
 				}
 			});
 			var count = 0;
-			function pulldownRefresh(sous) {
-				console.log(sous);
+			function pulldownRefresh() {
+//				console.log(sous);
 				setTimeout(function() {
-					console.log(sous);
-//					var count = 0;
+//					console.log(sous);
+					var count = 0;
 					mui.get(XPJFX_URL+'m/mkhShouk/ddbhxz',{fybs:count,sous:sous},function(data){
 						console.log(sous);
 					var table = document.body.querySelector('.mui-table-view');
@@ -119,11 +119,11 @@
 			
 			
 			
-			function search(){
-				var sous=document.getElementById("search").value;
-				alert(sous);
-				pulldownRefresh(sous);
-			}
+//			function search(){
+//				var sous=document.getElementById("search").value;
+//				alert(sous);
+//				pulldownRefresh(sous);
+//			}
 			/**
 			 * 上拉加载具体业务实现
 			 * <div class="mui-table">
@@ -151,7 +151,7 @@
 			var a =
 			'<div class="mui-table">'+
 			'<li class="mui-table-view-cell" onclick="adt( '+' \' ' +data.id+'\',\''+data.ddbh+' \' '+' )" >'+data.ddbh+'</li>'+
-			'</div>'
+			'</div>';
 			     return a;
 			}
 </script>

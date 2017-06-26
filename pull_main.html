@@ -8,6 +8,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
+			<link rel="stylesheet" type="text/css" href="css/dadada.css">
 			<style>
 				.mui-slider-indicator {
 				bottom: 0;
@@ -20,195 +21,86 @@
 
 	<body>
 		<!--下拉刷新容器-->
-		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
-				<div id="Gallery" class="mui-slider" style="margin-top:15px;">
-				<div class="mui-slider-group" id="messger">
-					<div class="mui-slider-item">
-						<ul class="mui-table-view mui-grid-view mui-grid-9">
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="rkGoods">
-									<span class="mui-icon mui-icon-home"><span class="mui-badge">5</span></span>
-									<div class="mui-media-body">入库</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-email" ></span>
-									<div class="mui-media-body">Email</div>
-								</a>
-							</li>
-							<li  class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="cxxsck_add">
-									<span class="mui-icon mui-icon-chatbubble"></span>
-									<div class="mui-media-body">销售出库</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="mydd_main">
-									<span class="mui-icon mui-icon-location"></span>
-									<div class="mui-media-body">我的订单</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-search"></span>
-									<div class="mui-media-body">进店</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-phone"></span>
-									<div class="mui-media-body">离店</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="setting">
-									<span class="mui-icon mui-icon-gear"></span>
-									<div class="mui-media-body">设置</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-info"></span>
-									<div class="mui-media-body">about</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-more"></span>
-									<div class="mui-media-body">more</div>
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="mui-slider-item">
-						<ul class="mui-table-view mui-grid-view mui-grid-9">
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="ykGoods">
-									<span class="mui-icon mui-icon-home"></span>
-									<div class="mui-media-body">商品移库</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="fukuan">
-									<span class="mui-icon mui-icon-email"></span></span>
-									<div class="mui-media-body">客户收付款</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="shoukuan">
-									<span class="mui-icon mui-icon-chatbubble"></span>
-									<div class="mui-media-body">供应商收付款</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="dingH">
-									<span class="mui-icon mui-icon-location"></span>
-									<div class="mui-media-body">订货</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-search"></span>
-									<div class="mui-media-body">Search</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-phone"></span>
-									<div class="mui-media-body">Phone</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-gear"></span>
-									<div class="mui-media-body">Setting</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="jddk">
-									<span class="mui-icon mui-icon-info"></span>
-									<div class="mui-media-body">进店</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="lddk">
-									<span class="mui-icon mui-icon-more"></span>
-									<div class="mui-media-body">离店</div>
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="mui-slider-item">
-						<ul class="mui-table-view mui-grid-view mui-grid-9">
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="rkJl">
-									<span class="mui-icon mui-icon-home"></span>
-									<div class="mui-media-body">入库记录</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="ykjl">
-									<span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
-									<div class="mui-media-body">移库记录</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="dingHlist">
-									<span class="mui-icon mui-icon-chatbubble"></span>
-									<div class="mui-media-body">订货记录</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-location"></span>
-									<div class="mui-media-body">location</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="store">
-									<span class="mui-icon mui-icon-search"></span>
-									<div class="mui-media-body">客户添加</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a id="storeList">
-									<span class="mui-icon mui-icon-phone"></span>
-									<div class="mui-media-body">客户列表</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-gear"></span>
-									<div class="mui-media-body">Setting</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-info"></span>
-									<div class="mui-media-body">about</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-more"></span>
-									<div class="mui-media-body">more</div>
-								</a>
-							</li>
-						</ul>
-					</div>
-
-				</div>
-				<div class="mui-slider-indicator">
-					<div class="mui-indicator mui-active"></div>
-					<div class="mui-indicator"></div>
-					<div class="mui-indicator"></div>
-				</div>
-			</div>
-			
-			
-			
-		</div> 
+		<div class="box">
+		
+		<div class="yilan">
+			<ul>
+				<li class="box1" id="rkGoods">
+					<span><img src="images/ruku.png"></span>
+					<div class="text">入库</div>
+				</li>
+				<li class="box2" id="cxxsck_add">
+					<span><img src="images/chuku.png"></span>
+					<div class="text">销售出库</div>
+				</li>
+				<li class="box3" id="mydd_main">
+					<span><img src="images/wodedingdan.png"></span>
+					<div class="text">我的订单</div>
+				</li>
+				<li class="box4" id="jddk">
+					<span><img src="images/jindian.png"></span>
+					<div class="text">进店</div>
+				</li>
+				<li class="box5" id="lddk">
+					<span><img src="images/lidian.png"></span>
+					<div class="text">离店</div>
+				</li>
+				<li class="box6" id="setting">
+					<span><img src="images/shezhi.png"></span>
+					<div class="text">设置</div>
+				</li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+		<div class="fenge"></div>
+		<div class="yilan">
+			<ul>
+				<li class="box1" id="ykGoods">
+					<span><img src="images/yiku.png"></span>
+					<div class="text">商品移库</div>
+				</li>
+				<li class="box2" id="fukuan">
+					<span><img src="images/fukuan.png"></span>
+					<div class="text">客户付款</div>
+				</li>
+				<li class="box3" id="shoukuan">
+					<span><img src="images/shoukuan.png"></span>
+					<div class="text">供应商收款</div>
+				</li>
+				<li class="box4" id="dingH">
+					<span><img src="images/dinghuo.png"></span>
+					<div class="text">订货</div>
+				</li>
+				<li class="box1" id="store">
+					<span><img src="images/kehutianjia.png"></span>
+					<div class="text">客户添加</div>
+				</li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+		<div class="fenge2"></div>
+		<div class="yilan">
+			<ul>
+				<li class="box1" id="rkJl">
+					<span><img src="images/rukujilu.png"></span>
+					<div class="text xia">入库记录</div>
+				</li>
+				<li class="box2" id="ykjl">
+					<span><img src="images/yikujilu.png"></span>
+					<div class="text xia">移库记录</div>
+				</li>
+				<li class="box3 xia" id="dingHlist">
+					<span><img src="images/dinghuojilu.png"></span>
+					<div class="text">订货记录</div>
+				</li>
+				<li class="box3 xia" id="storeList">
+					<span><img src="images/kehuliebiao.png"></span>
+					<div class="text">客户列表</div>
+				</li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+	</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/config.js"></script>
 		<!--<script src="js/vue.js"></script>-->
@@ -225,7 +117,7 @@
       contentrefresh : "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
       callback :pulldownRefresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
     }
-  }
+}
 	  	
 	  	
 	  	
@@ -239,10 +131,10 @@
 //						})	
 	mui.ready(function() {
 					if (mui.os.plus) {
-					setTimeout(function() {
-					
-						mui('#pullrefresh').pullRefresh().pullupLoading();
-					}, 1000);
+//					setTimeout(function() {
+//					
+//						mui('#pullrefresh').pullRefresh().pullupLoading();
+//					}, 1000);
 			}
 				document.getElementById('cxxsck_add').addEventListener('tap', function(event) {	
 				
