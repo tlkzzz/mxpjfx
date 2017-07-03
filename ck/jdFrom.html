@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>商品入库</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a  class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">进离店打卡</h1>
+		</header>
+		<div class="mui-content">
+			<div style="background-image: url(../images/cbd.jpg);height: 300px;width: 100%;">
+				
+			</div>
+			<form id='login-form' class="mui-input-group">
+			<div class="mui-input-row">
+					<label>客户</label>
+					<input id='khxz' type="text" class="mui-input-clear mui-input" readonly="true">
+			</div>
+			</form>
+			<div style="width: 100%;height: 38px;background-color: #DDFFDD;">
+				<div style="float: left;width: 80%;height: 38px;margin-top: 2px;" id="sfm"></div>
+				<input style="float: left;width: 20%;height: 38px;" type="button" value="打卡" id="dk"/>
+			</div>
+			<div style="width: 100%;height: 38px;background-color: #DDFFDD;margin-top: 3px;">
+				<div style="float: left;width: 80%;height: 38px;margin-top: 2px;" id="sfms"></div>
+				<input style="float: left;width: 20%;height: 38px;" type="button" value="打卡" id="dks"/>
+			</div>
+		</div>
+	</body>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/config.js"></script>
+	<script type="text/javascript">
+		mui.init({
+		});
+		if (mui.os.plus) {
+			mui.plusReady(function(){
+				document.getElementById("khxz").addEventListener('tap', function(event) {
+					mui.openWindow({
+      					url:'khxz.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'khxz.html',//子页面标志
+   					})
+				});
+				
+				document.getElementById("dk").addEventListener('tap', function(event) {
+					var khxz=document.getElementById("khxz").TEXT;
+					console.log(khxz);
+					if(khxz==undefined||khxz==''){
+						mui.toast("请选择客户");
+						return false;
+					}
+ 					plus.geolocation.getCurrentPosition(translatePoint,function(e){
+                    	mui.toast("异常:" + e.message);
+        			});
+				});
+				
+				
+				document.getElementById("dks").addEventListener('tap', function(event) {
+					
+ 					plus.geolocation.getCurrentPosition(translatePoints,function(e){
+                    	mui.toast("异常:" + e.message);
+        			});
+				});
+		});
+			}else{
+		mui.ready(function() {
+		});
+	}
+		
+	function hqkhxx(r){
+				console.log(r);
+				mui.get(XPJFX_URL+'m/mKhxx/khxxlist',{storeId:r},function(data){
+				document.getElementById("khxz").value=data[0].dpmc;
+				document.getElementById("khxz").TEXT=r;
+				});
+			}
+	function translatePoint(position){
+    var currentLon = position.coords.longitude;
+    var currentLat = position.coords.latitude;
+    console.log(currentLon);
+    console.log(currentLat);
+//书写自己的逻辑
+	var khxz=document.getElementById("khxz").TEXT;
+	mui.get(XPJFX_URL+'m/mJdlddk/jddk',{khxz:khxz,currentLon:currentLon,currentLat:currentLat},function(data){
+		console.log(data);
+		if(data){
+			var ydk="已打卡";
+			document.getElementById("dk").value=ydk;
+			document.getElementById("dk").disabled=true; 
+			document.getElementById("khxz").disabled=true; 
+			mui.toast("进店打卡成功");
+		}else{
+			mui.toast("不再该客户范围内，打卡失败");
+		}
+							});
+}
+	
+	function translatePoints(position){
+    var currentLon = position.coords.longitude;
+    var currentLat = position.coords.latitude;
+    console.log(currentLon);
+    console.log(currentLat);
+//书写自己的逻辑
+	var khxz=document.getElementById("khxz").TEXT;
+	mui.get(XPJFX_URL+'m/mJdlddk/lddk',{khxz:khxz,currentLon:currentLon,currentLat:currentLat},function(data){
+		console.log(data);
+		if(data){
+			mui.toast("离店打卡成功");
+			location.reload();
+		}
+							});
+}
+	
+	
+	function disptime(){
+		var today = new Date(); //获得当前时间
+ 		var hh = today.getHours();  //获得小时、分钟、秒
+ 		var mm = today.getMinutes();
+ 		var ss = today.getSeconds();
+ 		document.getElementById("sfm").innerHTML="<h4>当前时间："+hh+":"+mm+":"+ss+"<h4>";
+ 		document.getElementById("sfms").innerHTML="<h4>当前时间："+hh+":"+mm+":"+ss+"<h4>";
+ 		 var myTime=setTimeout("disptime()",1000);
+	}
+	function sss(){
+		mui.get(XPJFX_URL+'m/mJdlddk/list',function(data){
+			if(data!=undefined&&data!=''){
+				console.log(data[0].storeId);
+				console.log(data[0].cStore.dpmc);
+				var storeId=data[0].storeId;
+				var dpmc=data[0].cStore.dpmc;
+			var ydk="已打卡";
+			document.getElementById("dk").value=ydk;
+			document.getElementById("dk").disabled=true; 
+			document.getElementById("khxz").value=dpmc;
+			document.getElementById("khxz").TEXT=storeId;
+			document.getElementById("khxz").disabled=true; 
+			}
+		});
+		
+		disptime();
+		
+	}
+	
+	window.onload=sss;
+	</script>
+</html>

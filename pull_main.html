@@ -39,7 +39,7 @@
 				</li>
 				<li class="box4" id="jddk">
 					<span><img src="images/jindian.png"></span>
-					<div class="text">进店</div>
+					<div class="text">进离店打卡</div>
 				</li>
 				<li class="box5" id="lddk">
 					<span><img src="images/lidian.png"></span>
@@ -75,6 +75,10 @@
 					<span><img src="images/kehutianjia.png"></span>
 					<div class="text">客户添加</div>
 				</li>
+				<!--<li class="box1" id="ddtt">
+					<span><img src="images/kehutianjia.png"></span>
+					<div class="text">地图</div>
+				</li>-->
 			</ul>
 			<div class="clearfix"></div>
 		</div>
@@ -136,6 +140,26 @@
 //						mui('#pullrefresh').pullRefresh().pullupLoading();
 //					}, 1000);
 			}
+//					document.getElementById('ddtt').addEventListener('tap', function(event) {	
+//				
+//				mui.get(XPJFX_URL+'m/mLogin/list',function(data){
+//					console.log(data.islogin);
+//						if(data.islogin==undefined){
+//							mui.openWindow({
+//							id: 'ck/ddtt',
+//							url: 'ck/ddtt.html',
+//					})
+//				}else{
+//					mui.toast("请登录账户");
+//					mui.openWindow({
+//							id: 'login',
+//							url: 'login.html',
+//					});
+//				}
+//					});
+//				})
+					
+					
 				document.getElementById('cxxsck_add').addEventListener('tap', function(event) {	
 				
 				mui.get(XPJFX_URL+'m/mLogin/list',function(data){
@@ -320,8 +344,12 @@
 					mui.get(XPJFX_URL+'m/mLogin/list',function(data){
 					console.log(data.islogin);
 						if(data.islogin==undefined){
-							mui.get(XPJFX_URL+'m/mJdlddk/jddk',function(data){
-								mui.toast("打卡成功");
+//							mui.get(XPJFX_URL+'m/mJdlddk/jddk',function(data){
+//								mui.toast("打卡成功");
+//							});
+							mui.openWindow({
+								id: 'ck/jdFrom',
+								url: 'ck/jdFrom.html',
 							});
 				}else{
 					mui.toast("请登录账户");
@@ -336,8 +364,12 @@
 					mui.get(XPJFX_URL+'m/mLogin/list',function(data){
 					console.log(data.islogin);
 						if(data.islogin==undefined){
-							mui.get(XPJFX_URL+'m/mJdlddk/lddk',function(data){
-								mui.toast("打卡成功");
+//							mui.get(XPJFX_URL+'m/mJdlddk/lddk',function(data){
+//								mui.toast("打卡成功");
+//							});
+							mui.openWindow({
+								id: 'ck/dkjlMain',
+								url: 'ck/dkjlMain.html',
 							});
 				}else{
 					mui.toast("请登录账户");
@@ -423,6 +455,75 @@
 				},2500);
 			}
   	
+  	function userRole(){
+		document.getElementById('rkGoods').style.display="none";
+		document.getElementById('cxxsck_add').style.display="none";
+		document.getElementById('mydd_main').style.display="none";
+		document.getElementById('jddk').style.display="none";
+		document.getElementById('lddk').style.display="none";
+		document.getElementById('ykGoods').style.display="none";
+		document.getElementById('fukuan').style.display="none";
+		document.getElementById('shoukuan').style.display="none";
+		document.getElementById('dingH').style.display="none";
+		document.getElementById('store').style.display="none";
+		document.getElementById('rkJl').style.display="none";
+		document.getElementById('ykjl').style.display="none";
+		document.getElementById('dingHlist').style.display="none";
+		document.getElementById('storeList').style.display="none";
+		
+//		document.getElementById('rkGoods').style.display="block";
+  		mui.get(XPJFX_URL+'sys/role/userRole',function(data){
+//			alert("data.menu.id");
+
+			for(var i = 0;i < data.length; i++){
+				console.log(data[i].menu.id);
+				if(data[i].menu.id=='15bcc491f40346618e823fcd02bcaa72'){
+					document.getElementById('rkGoods').style.display="block";
+				}
+				if(data[i].menu.id=='ed83bcc41c094a8e89dc4d566f92ed50'){
+					document.getElementById('cxxsck_add').style.display="block";
+				}
+				if(data[i].menu.id=='3c5dbdb849b149d98a852b0f1ddaaf49'){
+					document.getElementById('mydd_main').style.display="block";
+				}
+				if(data[i].menu.id=='27f15cfce4684dd2a9eb9fd16f9392a3'){
+					document.getElementById('jddk').style.display="block";
+				}
+				if(data[i].menu.id=='1c2f0a72837542bfb5e454cb9ac0fb50'){
+					document.getElementById('lddk').style.display="block";
+				}
+				if(data[i].menu.id=='26b686d40cd14bf29fc7f9fb4833d8a8'){
+					document.getElementById('ykGoods').style.display="block";
+				}
+				if(data[i].menu.id=='3eff7c8dcb81482fb7138f9940d65772'){
+					document.getElementById('fukuan').style.display="block";
+				}
+				if(data[i].menu.id=='4bf592f34115461785087ce545319353'){
+					document.getElementById('shoukuan').style.display="block";
+				}
+				if(data[i].menu.id=='1f3a21492bba4b06ae91bdd64ffc180b'){
+					document.getElementById('dingH').style.display="block";
+				}
+				if(data[i].menu.id=='1a0bc5b731784e3783b0d69c6176bc6a'){
+					document.getElementById('store').style.display="block";
+				}
+				if(data[i].menu.id=='56a8775904f94cf0968a2747176b0144'){
+					document.getElementById('rkJl').style.display="block";
+				}
+				if(data[i].menu.id=='19175bc8f2404a338025fb84aba2b179'){
+					document.getElementById('ykjl').style.display="block";
+				}
+				if(data[i].menu.id=='db9b157d273c41bf9effbdf32b4ec328'){
+					document.getElementById('dingHlist').style.display="block";
+				}
+				if(data[i].menu.id=='86988b334c2543f898b9bab7efe50ce5'){
+					document.getElementById('storeList').style.display="block";
+				}
+			}
+});
+  	}
+  	
+  	window.onload=userRole;
 		</script>
 	</body>
 

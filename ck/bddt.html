@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>Map Example</title>
+		
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<script type="text/javascript">
+var em=null,map=null;
+// H5 plus事件处理
+function plusReady(){
+	// 确保DOM解析完成
+	if(!em||!window.plus||map){return};
+	map = new plus.maps.Map("map");
+	map.centerAndZoom( new plus.maps.Point(113.037192,28.176532), 12 );
+}
+if(window.plus){
+	plusReady();
+}else{
+	document.addEventListener("plusready",plusReady,false);
+}
+// DOMContentloaded事件处理
+document.addEventListener("DOMContentLoaded",function(){
+	em=document.getElementById("map");
+	plusReady();
+},false);
+// 获取当前地图显示的地图中心点位置
+function getCurrentCenter(){
+	map.getCurrentCenter( function ( state, point ){
+		if( 0 == state ){
+			console.log(JSON.stringify(point.longitude));
+//			alert( JSON.stringify(point) );
+			ws=plus.webview.currentWebview();
+			wo=ws.opener();
+			var g=JSON.stringify(point.longitude);
+			var gg=JSON.stringify(point.latitude);
+			 wo.evalJS("hqbddt('"+ g+'\',\''+gg +"');");
+   						  ws.back();
+   						  ws.close();
+// 						  var opener = plus.webview.currentWebview().opener('ck/khAdd.html');
+//                  opener.reload();
+		}else{
+			alert( "Failed!" );
+		}
+	} );
+}
+		</script>
+		<style type="text/css">
+#map {
+	width: 100%;
+	position: fixed;
+	top: 100px;
+	bottom: 0px;
+	line-height: 200px;
+	text-align: center;
+	background: #FFFFFF;
+}
+		</style>
+	</head>
+	<body>
+		
+		获取当前地图显示的地图中心点位置<br/>
+		<button onclick="getCurrentCenter()">获取中心位置</button>
+		<div id="map">地图加载中...</div>
+	</body>
+</html>

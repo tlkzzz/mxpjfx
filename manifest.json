@@ -73,6 +73,9 @@
 		"Zip": {
 			"description": "文件压缩与解压缩"
 		},
+		"geolocation ":{
+			"description": "位置"
+		},
 
 
 
@@ -82,7 +85,7 @@
 		"Webview": {},
 		"NativeUI": {},
 		"Navigator": {},
-		"NativeObj": {},"Share":{},"OAuth":{},"Device":{},"Camera":{},"Barcode":{},"Push":{},"Maps":{},"Audio":{},"Speech":{},"Payment":{},"Contacts":{},"Statistic":{},"Messaging":{},"Geolocation":{}
+		"NativeObj": {},"Share":{},"OAuth":{},"Device":{},"Camera":{},"Barcode":{},"Push":{},"Audio":{},"Speech":{},"Payment":{},"Contacts":{},"Statistic":{},"Messaging":{},"Geolocation":{},"Maps":{}
 	},
 	"plus": {
 		"splashscreen": {
@@ -91,7 +94,7 @@
 		},
 		"runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
 		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
-		"distribute": {
+		"distribute": {"plugins":{"maps":{"baidu":{"appkey_ios":"BmKUxPhQgQrfGTLA33fPXGMwcSwKeUfW","appkey_android":"BmKUxPhQgQrfGTLA33fPXGMwcSwKeUfW","appkey":"","description":""}}},
 			"apple": {
 				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
 				"mobileprovision": "",/*iOS应用打包配置文件*/
@@ -107,10 +110,7 @@
 				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
 				"permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.SEND_SMS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.READ_SMS\"/>"]
 			},
-			"orientation": [
-				"portrait-primary",
-				"portrait-secondary"
-			],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"orientation": ["portrait-primary","portrait-secondary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
 			"icons": {
 				"ios": {
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
@@ -145,7 +145,7 @@
 					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
 					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
 					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
-					"xxhdpi": "unpackage/res/icons/144x144.png"
+					"xxhdpi": "unpackage/res/icons/144x144.png","xxxhdpi":"unpackage/res/icons/192x192.png"
 				}
 			},
 			"splashscreen": {
@@ -270,7 +270,15 @@
 					"images/qihoo.png",
 					"images/qq.png",
 					"images/sinaweibo.png",
-					"images/weixin.png"
+					"images/weixin.png",
+					"js/config.js",
+					"images/组-2-拷贝（合并）@2x.png",
+					"images/Layer-3@2x.png",
+					"images/组-2-拷贝（合并）.png",
+					"images/xian.png",
+					"images/ybsp.png",
+					"images/Layer-3.png",
+					"css/bootstrap.min.css"
 				],
 				"refer": [
 					"unlock.html",
@@ -329,11 +337,46 @@
 					"css/mui.min.css",
 					"fonts/mui.ttf",
 					"js/vue.js",
-					"ck/cxxsck_add.html"
+					"ck/cxxsck_add.html",
+					"js/config.js",
+					"css/dadada.css",
+					"images/dinghuojilu.png",
+					"images/jindian.png",
+					"images/chuku.png",
+					"images/dianchidianliangtiao.png",
+					"images/yikujilu.png",
+					"images/shoukuan.png",
+					"images/ruku.png",
+					"images/yiku.png",
+					"images/shezhi.png",
+					"images/rukujilu.png",
+					"images/lidian.png",
+					"images/wodedingdan.png",
+					"images/dinghuo.png",
+					"images/fukuan.png",
+					"images/kehuliebiao.png",
+					"images/kehutianjia.png"
 				],
 				"refer": [
 					"cxxsck_add.html",
-					"ck/mydd_main.html"
+					"ck/mydd_main.html",
+					"ck/dingGoods.html",
+					"ck/rkGoods.html",
+					"ck/ykGoods.html",
+					"ck/rkjlMain.html",
+					"ck/fukuan.html",
+					"ck/ykjlMain.html",
+					"ck/shoukuan.html",
+					"ck/khAdd.html",
+					"ck/khList.html",
+					"ck/dingHList.html",
+					"ck/dHList.html",
+					"ck/text.html",
+					"setting.html",
+					"login.html",
+					"ck/ddtt.html",
+					"ck/jdFrom.html",
+					"ck/dkjlMain.html"
 				],
 				"priority": 0
 			},
@@ -348,10 +391,18 @@
 					"images/yuantiao.jpg",
 					"images/logo.png",
 					"css/app.css",
-					"js/common.js"
+					"js/common.js",
+					"js/config.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					null
 				],
 				"refer": [
-					"ck/barcode_scan2.html"
+					"ck/barcode_scan2.html",
+					"ck/Goods.html",
+					"ck/khxz.html"
 				]
 			},
 			"cxxsck_add.html": {
@@ -397,7 +448,9 @@
 			"ck/mydd.html": {
 				"resources": [
 					"js/mui.min.js",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"js/config.js",
+					"images/shuijiao.jpg"
 				],
 				"refer": [
 					"ck/mydd_xq.html"
@@ -415,6 +468,354 @@
 				"refer": [
 					"ck/barcode_scan2.html"
 				],
+				"priority": 0
+			},
+			"ck/Goods.html": {
+				"resources": [
+					"css/app.css",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/config.js",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/dingGoods.html": {
+				"resources": [
+					"js/common.js",
+					"js/mui.picker.min.js",
+					"images/logo.png",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.picker.min.css",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"js/config.js"
+				],
+				"refer": [
+					"ck/Goods.html",
+					"ck/khxz.html"
+				],
+				"priority": 0
+			},
+			"ck/khxz.html": {
+				"resources": [
+					"images/shuijiao.jpg",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/rkGoods.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"js/city.data.js",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"js/city.data-3.js",
+					"js/config.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"ck/Goods.html"
+				],
+				"priority": 0
+			},
+			"ck/ykGoods.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"js/city.data.js",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"js/city.data-3.js",
+					"js/config.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"ck/Goods.html"
+				],
+				"priority": 0
+			},
+			"ck/rkjlMain.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"ck/rkjl.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/rkjl.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/fukuan.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"js/config.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"ck/khxz.html",
+					"ck/ddbh.html",
+					"ck/fukexx.html",
+					"ck/fuddbh.html"
+				],
+				"priority": 0
+			},
+			"ck/ykjlMain.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"ck/ycjl.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/ycjl.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/ddbh.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/fukexx.html": {
+				"resources": [
+					"images/shuijiao.jpg",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/fuddbh.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/shoukuan.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.min.js",
+					"js/mui.poppicker.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"js/config.js"
+				],
+				"refer": [
+					"ck/khxz.html",
+					"ck/ddbh.html",
+					"ck/gysXz.html",
+					"ck/fukexx.html",
+					"ck/fgysxz.html",
+					"ck/fuddbh.html"
+				],
+				"priority": 0
+			},
+			"ck/gysXz.html": {
+				"resources": [
+					"images/shuijiao.jpg",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/fgysxz.html": {
+				"resources": [
+					"images/shuijiao.jpg",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/khAdd.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.min.js",
+					"js/mui.poppicker.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/city.data.js",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"js/city.data-3.js",
+					"js/config.js",
+					"css/common_imgup.css",
+					"img/a11.png",
+					"css/index_imgup.css",
+					"js/imgUp.js",
+					"css/index.css",
+					"css/commons.css",
+					"img/a7.png",
+					"img/loading.gif",
+					"ck/khAdd.html"
+				],
+				"refer": [
+					"ck/bddt.html",
+					"ck/ddtt.html"
+				],
+				"priority": 0
+			},
+			"ck/khList.html": {
+				"resources": [
+					"js/config.js",
+					"images/shuijiao.jpg",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/dingHList.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/dHList.html": {
+				"resources": [
+					"ck/dingHList.html",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/text.html": {
+				"resources": [
+					"ck/rkGoods.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/ddtt.html": {
+				"resources": [
+					"ck/bddt.html",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/bddt.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/jdFrom.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"fonts/mui.ttf",
+					"js/city.data.js",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"js/city.data-3.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/config.js",
+					"images/cbd.jpg"
+				],
+				"refer": [
+					"ck/khxz.html"
+				],
+				"priority": 0
+			},
+			"ck/dkjlMain.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"ck/dkjl.html",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/dkjl.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/config.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"loginTest.html": {
+				"resources": [
+					"images/Layer-3.png",
+					"images/xian.png",
+					"images/优彼食品透明图.png",
+					"css/bootstrap.min.css",
+					"images/shuijiao.jpg",
+					"images/ybsp.png",
+					"js/mui.min.js",
+					"js/config.js"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},

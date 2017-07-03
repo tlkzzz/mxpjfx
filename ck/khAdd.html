@@ -11,8 +11,8 @@
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<link href="../css/mui.picker.css" rel="stylesheet" />
 		<link href="../css/mui.poppicker.css" rel="stylesheet" />
-		<link href="../css/commons.css" rel="stylesheet" />
-		<link href="../css/index.css" rel="stylesheet" />
+		<!--<link href="../css/commons.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" />-->
 		<!--App自定义的css-->
 		<!--<link rel="stylesheet" type="text/css" href="../css/app.css"/>-->
 		
@@ -129,14 +129,24 @@
 									<label>开户人</label>
 									<input type="text" id="khr">
 								</div>
-								<div>
-									<div id="allmap" class="mui-input-row">
-    <!--<input type="button" id="ddtt" value="地图">-->
-    	<button id='ddtt' class="mui-btn mui-btn-block mui-btn-primary">地图</button>
-</div>
-									
+								<div class="mui-input-row">
+									<label>经度</label>
+									<input type="text" id="jd" onclick="dkdt();" readonly="true">
 								</div>
+								<div class="mui-input-row">
+									<label>纬度</label>
+									<input type="text" id="wd" onclick="dkdt();" readonly="true">
+								</div>
+
+									<!--<div class="mui-input-row">
+    							<button id='bddt' >地图</button>
+							</div>-->
+								
+								
 								</form>
+								<!--<div class="mui-content-padded">
+									<button id='bddt' class="mui-btn mui-btn-block mui-btn-primary" onclick="dkdt();">地图</button>
+								</div>-->
 						</div>
 					</li>
 				</ul>
@@ -151,22 +161,17 @@
 		<script src="../js/mui.poppicker.js"></script>
 		<script src="../js/city.data.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
-		<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=EVunsrA5meplA36r4oED7mwXdpYqzXiR"></script>-->
-    <!--<script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>-->
 		<script>
 			
 			mui.init({
 				swipeBack:true //启用右滑关闭功能
 			});
+			
+			
 			var j;
 			if (mui.os.plus) {
 				mui.plusReady(function(){
-					document.getElementById('ddtt').addEventListener('tap', function() { 
-						mui.openWindow({
-							id: 'ck/ddtt',
-							url: 'ck/ddtt.html',
-					})
-					});
+					
 					
 					
 					document.getElementById('ddddd').addEventListener('tap', function() { 
@@ -241,11 +246,11 @@
 				document.getElementById('Save').addEventListener('tap', function(event) {
 					var mdtp=document.getElementById('ddddd').src;
 					console.log(mdtp);
-					var khfl=document.getElementById('khfl').text;
-					if(khfl==undefined || khfl==''){
-						mui.toast('请选择客户分类');
-						return false;
-					}
+					var khfl=document.getElementById('khfl').TEXT;
+//					if(khfl==undefined || khfl==''){
+//						mui.toast('请选择客户分类');
+//						return false;
+//					}
 					var qy=document.getElementById('showCityPicker3').value;
 					var xxdz=document.getElementById('xxdz').value;
 					var cgy=document.getElementById('cgy').value;
@@ -266,9 +271,11 @@
 					var khhmc=document.getElementById('khhmc').value;
 					var khhzh=document.getElementById('khhzh').value;
 					var khr=document.getElementById('khr').value;
+					var jd=document.getElementById('jd').value;
+					var wd=document.getElementById('wd').value;
 					mui.get(XPJFX_URL+'m/mStore/save',{mdtp:mdtp,khfl:khfl,qy:qy,xxdz:xxdz,
 					cgy:cgy,dpmc:dpmc,khmc:khmc,sjhm:sjhm,cgylxfs:cgylxfs,yb:yb,wx:wx,qq:qq,
-					hzzq:hzzq,ed:ed,xsqd:xsqd,jhqd:jhqd,dh:dh,dzyj:dzyj,jfxs:jfxs,khhmc:khhmc,khhzh:khhzh,khr:khr
+					hzzq:hzzq,ed:ed,xsqd:xsqd,jhqd:jhqd,dh:dh,dzyj:dzyj,jfxs:jfxs,khhmc:khhmc,khhzh:khhzh,khr:khr,jd:jd,wd:wd
 					},function(data){
 						mui.toast("保存成功");
 					});
@@ -419,6 +426,28 @@
             var dataURL = canvas.toDataURL("image/png", 0.8); 
             return dataURL.replace("data:image/png;base64,", ""); 
         }
+        
+        
+        
+        function dkdt(){
+//      	document.getElementById('bddt').addEventListener('tap', function() {
+//						mui.toast("进入方法");
+//						plus.webview.currentWebview().hide(); 
+						plus.webview.open('../ck/bddt.html','bddt.html');
+//						mui.openWindow({
+//							id: 'ck/bddt',
+//							url: 'bddt.html',
+//							
+//					});
+//					});
+        }
+        
+        	function hqbddt(r,rr){
+        		console.log(r);
+        		document.getElementById('jd').value=r;
+        		console.log(rr);
+        		document.getElementById('wd').value=rr;
+        	}
 		</script>
 		
 	</body>
