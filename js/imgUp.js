@@ -10,19 +10,28 @@ $(function(){
 		var file = document.getElementById(idFile);
 		var imgContainer = $(this).parents(".z_photo"); //存放图片的父亲元素
 		var fileList = file.files; //获取的图片文件
+		
 		console.log(fileList+"======filelist=====");
+		console.log(fileList[0]);
+		
 		var input = $(this).parent();//文本框的父亲元素
 		var imgArr = [];
 		//遍历得到的图片文件
 		var numUp = imgContainer.find(".up-section").length;
 		var totalNum = numUp + fileList.length;  //总的数量
-		if(fileList.length > 4 || totalNum > 4 ){
-			alert("上传图片数目不可以超过4个，请重新选择");  //一次选择上传超过5个 或者是已经上传和这次上传的到的总数也不可以超过5个
+		if(fileList.length > 1 || totalNum > 1){
+			alert("上传图片数目不可以超过1个，请重新选择");  //一次选择上传超过5个 或者是已经上传和这次上传的到的总数也不可以超过5个
 		}
-		else if(numUp < 4){
+		else if(numUp < 1){
 			fileList = validateUp(fileList);
 			for(var i = 0;i<fileList.length;i++){
 			 var imgUrl = window.URL.createObjectURL(fileList[i]);
+
+        mui.ajax('http://192.168.0.150:8080/a/m/mStore/tpAdd',{fileList:fileList[0]},function(data){
+        	
+        });
+			
+			
 			     imgArr.push(imgUrl);
 			 var $section = $("<section class='up-section fl loading'>");
 			     imgContainer.prepend($section);
@@ -53,7 +62,7 @@ $(function(){
 		 	 $(".up-img").removeClass("up-opcity");
 		 },450);
 		 numUp = imgContainer.find(".up-section").length;
-		if(numUp >= 5){
+		if(numUp >= 1){
 			$(this).parent().hide();
 		}
 		
@@ -71,7 +80,7 @@ $(function(){
 	$(".wsdel-ok").click(function(){
 		$(".works-mask").hide();
 		var numUp = delParent.siblings().length;
-		if(numUp < 6){
+		if(numUp < 2){
 			delParent.parent().find(".z_file").show();
 		}
 		 delParent.remove();
@@ -85,6 +94,7 @@ $(function(){
 		function validateUp(files){
 			var arrFiles = [];//替换的文件数组
 			for(var i = 0, file; file = files[i]; i++){
+				
 				//获取文件上传的后缀名
 				var newStr = file.name.split("").reverse().join("");
 				if(newStr.split(".")[0] != null){
@@ -92,6 +102,7 @@ $(function(){
 						console.log(type+"===type===");
 						if(jQuery.inArray(type, defaults.fileType) > -1){
 							// 类型符合，可以上传
+							 
 							if (file.size >= defaults.fileSize) {
 								alert(file.size);
 								alert('您这个"'+ file.name +'"文件大小过大');	

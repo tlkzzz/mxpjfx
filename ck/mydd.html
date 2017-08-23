@@ -110,16 +110,27 @@
 			
 			function li_html(data){
 			var a =
-			'<a href="javascript:;">'+
-            '<img class="mui-media-object mui-pull-left" src="../images/shuijiao.jpg">'+
+			'<div onclick="sc('+' \' ' +data.id+' \' '+' )">'+
+            '<img style="width:50px ;height: 60px;" class="mui-media-object mui-pull-left" src="'+data.store.mdtp+'">'+
             '<div class="mui-media-body">'+
-               data.ddbh+
-                   '<p class="mui-ellipsis">金额：'+data.je+'</p>'+
+              '<p class="mui-ellipsis">客户：'+data.store.name+'</p>'+
+               '<p class="mui-ellipsis">编号：'+data.ddbh+'</p>'+
+                   '<p class="mui-ellipsis">经手人：'+data.spr.name+'</p>'+
 //               '<p class="mui-ellipsis">创建人：'+data.createBy.id+'</p>'+
-                '<p class="mui-ellipsis">实际金额：'+data.sjje+'</p>'+
+//              '<p class="mui-ellipsis">实际金额：'+data.sjje+'</p>'+
             '</div>'+
-        '</a>'
+        '</div>'
 			     return a;
+			}
+			function sc(ss){
+				console.log(ss);
+			mui.openWindow({ 
+      					url:'ddxq.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'ddxq.html',//子页面标志
+      					extras: {//extras里面的就是参数了
+                        entrance: ss
+                    },
+      			});
 			}
 </script>
 </html>

@@ -43,12 +43,12 @@
 				</li>
 				<li class="box5" id="lddk">
 					<span><img src="images/lidian.png"></span>
-					<div class="text">离店</div>
+					<div class="text">打卡记录</div>
 				</li>
-				<li class="box6" id="setting">
+				<!--<li class="box6" id="setting">
 					<span><img src="images/shezhi.png"></span>
 					<div class="text">设置</div>
-				</li>
+				</li>-->
 			</ul>
 			<div class="clearfix"></div>
 		</div>
@@ -416,21 +416,21 @@
 				}
 					});
 				})	
-				document.getElementById('setting').addEventListener('tap', function(event) {	
-						mui.openWindow({
-							id: 'settings',
-							url: 'setting.html',
-							show: {
-								aniShow: 'pop-in'
-							},
-							styles: {
-								popGesture: 'hide'
-							},
-							waiting: {
-								autoShow: false
-							}
-						});
-				})		
+//				document.getElementById('setting').addEventListener('tap', function(event) {	
+//						mui.openWindow({
+//							id: 'settings',
+//							url: 'setting.html',
+//							show: {
+//								aniShow: 'pop-in'
+//							},
+//							styles: {
+//								popGesture: 'hide'
+//							},
+//							waiting: {
+//								autoShow: false
+//							}
+//						});
+//				})		
 					
 			});	
 			
@@ -478,7 +478,7 @@
 			for(var i = 0;i < data.length; i++){
 				console.log(data[i].menu.id);
 				if(data[i].menu.id=='15bcc491f40346618e823fcd02bcaa72'){
-					document.getElementById('rkGoods').style.display="block";
+					document.getElementById('rkGoods').style.display="block";//
 				}
 				if(data[i].menu.id=='ed83bcc41c094a8e89dc4d566f92ed50'){
 					document.getElementById('cxxsck_add').style.display="block";

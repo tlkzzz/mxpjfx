@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>商品入库</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" >
+			<a   class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">入库详情</h1>
+		</header>
+			<div class="carddiv"  style="margin-top: 50px;"></div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/config.js"></script>
+		
+	<script type="text/javascript">
+		mui.init({
+		});
+		if (mui.os.plus) {
+			mui.plusReady(function(){
+				var wv = plus.webview.currentWebview();
+				var ids=wv.entrance;
+				mui.get(XPJFX_URL+'m/mRkGoods/rukxq',{ids:ids},function(data){
+				addv(data);
+				});
+			})
+		}
+		
+		function  addv (data){
+							var table = document.body.querySelector('.carddiv');
+					var dc=	document.createElement('div');
+					dc.className="mui-card";
+					dc.innerHTML='<div class="mui-card-content" >'+
+					'<div class="mui-card-content-inner">'+
+						'<p><span>商  品 :  </span><span style="color: #333;">'+data[0].goods.name+'</span></p>'+
+						'<p><span>仓  库 :  </span><span style="color: #333;">'+data[0].house.name+'</span></p>'+
+						'<p><span>供应商:  </span><span style="color: #333;">'+data[0].supplier.name+'</span></p>'+
+						'<p><span>单  价 :  </span><span style="color: #333;">'+data[0].cbj+'</span></p>'+
+						'<p><span>入库数量 :  </span><span style="color: #333;">'+data[0].rknub+'</span></p>'+
+						'<p><span>库存量:  </span><span style="color: #333;">'+data[0].rkhnub+'</span></p>'+
+						'<p><span>入库前成本价:  </span><span style="color: #333;">'+data[0].rkqcbj+'</span></p>'+
+					'<p><span>入库后成本价:  </span><span style="color: #333;">'+data[0].rkhcbj+'</span></p>'+
+					'<p><span>开始入库时间:  </span><span style="color: #333;">'+data[0].startDate+'</span></p>'+
+					'<p><span>结束入库时间:  </span><span style="color: #333;">'+data[0].endDate+'</span></p>'+
+				'</div>'+
+				  '</div>';
+					table.appendChild(dc);
+			}
+	</script>
+</html>

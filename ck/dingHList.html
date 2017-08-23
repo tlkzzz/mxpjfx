@@ -95,7 +95,7 @@
 			
 			function li_html(data){
 			var a =
-			'<div class="mui-table">'+
+			'<div class="mui-table"  onclick="sc('+' \' ' +data.id+' \' '+' )">'+
             '<div class="mui-table-cell mui-col-xs-10">'+
             '<h4 class="mui-ellipsis-2">'+data.ddbh+
             '</h4>'+
@@ -107,10 +107,19 @@
              '<p class="mui-h6 mui-ellipsis">送货地址：'+data.dz+'</p>'+
             '</div>'+
         	'<div class="mui-table-cell mui-col-xs-2 mui-text-right">'
-        	'<span class="mui-h5">12:25</span>'+
         	'</div>'+
         	'</div>'
 			     return a;
+			}
+			function sc(ss){
+				console.log(ss);
+			mui.openWindow({ 
+      					url:'dhxq.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'dhxq.html',//子页面标志
+      					extras: {//extras里面的就是参数了
+                        entrance: ss
+                    },
+      			});
 			}
 </script>
 </html>

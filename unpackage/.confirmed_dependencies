@@ -6,7 +6,17 @@
       "css/mui.min.css",
       "css/style.css",
       "js/mui.enterfocus.js",
-      "fonts/mui.ttf"
+      "fonts/mui.ttf",
+      "js/config.js",
+      "images/ý-2-ý\u001d\b\bv\t@2x.png",
+      "images/Layer-3@2x.png",
+      "images/ý-2-ý\u001d\b\bv\t.png",
+      "images/ý-2-ý\u001d\b\bv\t@2x.png",
+      "images/ý-2-ý\u001d\b\bv\t.png",
+      "images/xian.png",
+      "images/ybsp.png",
+      "images/Layer-3.png",
+      "css/bootstrap.min.css"
     ],
     "refer": [
       "main.html",
@@ -94,12 +104,48 @@
       "js/mui.min.js",
       "css/mui.min.css",
       "fonts/mui.ttf",
-      "js/vue.js"
+      "js/vue.js",
+      "js/config.js",
+      "css/dadada.css",
+      "images/dinghuojilu.png",
+      "images/jindian.png",
+      "images/chuku.png",
+      "images/dianchidianliangtiao.png",
+      "images/yikujilu.png",
+      "images/shoukuan.png",
+      "images/ruku.png",
+      "images/yiku.png",
+      "images/shezhi.png",
+      "images/rukujilu.png",
+      "images/lidian.png",
+      "images/wodedingdan.png",
+      "images/dinghuo.png",
+      "images/fukuan.png",
+      "images/kehuliebiao.png",
+      "images/kehutianjia.png"
     ],
     "refer": [
       "ck/cxxsck_add.html",
       "cxxsck_add.html",
-      "ck/mydd_main.html"
+      "ck/mydd_main.html",
+      "ck/dingGoods.html",
+      "ck/rkGoods.html",
+      "ck/ykGoods.html",
+      "ck/rkjlMain.html",
+      "ck/fukuan.html",
+      "ck/ykjlMain.html",
+      "ck/shoukuan.html",
+      "ck/khAdd.html",
+      "ck/khList.html",
+      "ck/dingHList.html",
+      "ck/dHList.html",
+      "ck/text.html",
+      "setting.html",
+      "login.html",
+      "ck/ddtt.html",
+      "ck/jdFrom.html",
+      "ck/dkjlMain.html",
+      "ck/ssssssss.html"
     ]
   },
   "cxxsck_add.html": {
@@ -111,7 +157,8 @@
       "fonts/mui.ttf",
       "css/mui.min.css",
       "css/style.css"
-    ]
+    ],
+    "refer": []
   },
   "ck/cxxsck_add.html": {
     "resources": [
@@ -123,10 +170,17 @@
       "images/yuantiao.jpg",
       "images/logo.png",
       "css/app.css",
-      "js/common.js"
+      "js/common.js",
+      "js/config.js",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css"
     ],
     "refer": [
-      "ck/barcode_scan2.html"
+      "ck/barcode_scan2.html",
+      "ck/Goods.html",
+      "ck/khxz.html"
     ]
   },
   "ewm.html": {
@@ -134,13 +188,15 @@
       "js/mui.min.js",
       "fonts/mui.ttf",
       "css/mui.min.css"
-    ]
+    ],
+    "refer": []
   },
   "ck/barcode_scan2.html": {
     "resources": [
       "css/common.css",
       "js/common.js"
-    ]
+    ],
+    "refer": []
   },
   "ck/mydd_main.html": {
     "resources": [
@@ -156,10 +212,13 @@
   "ck/mydd.html": {
     "resources": [
       "js/mui.min.js",
-      "css/mui.min.css"
+      "css/mui.min.css",
+      "js/config.js",
+      "images/shuijiao.jpg"
     ],
     "refer": [
-      "ck/mydd_xq.html"
+      "ck/mydd_xq.html",
+      "ck/ddxq.html"
     ]
   },
   "ck/mydd_xq.html": {
@@ -173,5 +232,396 @@
     "refer": [
       "ck/barcode_scan2.html"
     ]
+  },
+  "ck/Goods.html": {
+    "resources": [
+      "css/app.css",
+      "js/common.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/config.js",
+      "fonts/mui.ttf"
+    ],
+    "refer": []
+  },
+  "ck/dingGoods.html": {
+    "resources": [
+      "js/common.js",
+      "js/mui.picker.min.js",
+      "images/logo.png",
+      "js/mui.min.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mui.picker.min.css",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "ck/Goods.html",
+      "ck/khxz.html"
+    ]
+  },
+  "ck/khxz.html": {
+    "resources": [
+      "images/shuijiao.jpg",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "ck/rkGoods.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/city.data.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/city.data-3.js",
+      "js/config.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "ck/Goods.html"
+    ]
+  },
+  "ck/ykGoods.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/city.data.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/city.data-3.js",
+      "js/config.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "ck/Goods.html"
+    ]
+  },
+  "ck/rkjlMain.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "ck/rkjl.html"
+    ],
+    "refer": [
+      "ck/rkjl.html"
+    ]
+  },
+  "ck/rkjl.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "ck/ycjl.html",
+      "ck/rkxq.html"
+    ]
+  },
+  "ck/fukuan.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/config.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "ck/khxz.html",
+      "ck/ddbh.html",
+      "ck/fukexx.html",
+      "ck/fuddbh.html"
+    ]
+  },
+  "ck/ykjlMain.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "ck/ycjl.html"
+    ],
+    "refer": [
+      "ck/ycjl.html"
+    ]
+  },
+  "ck/ycjl.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "ck/ycxq.html"
+    ]
+  },
+  "ck/ddbh.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "ck/fukexx.html": {
+    "resources": [
+      "images/shuijiao.jpg",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "ck/fuddbh.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "ck/shoukuan.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "js/mui.min.js",
+      "js/mui.poppicker.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/config.js"
+    ],
+    "refer": [
+      "ck/khxz.html",
+      "ck/ddbh.html",
+      "ck/gysXz.html",
+      "ck/fukexx.html",
+      "ck/fgysxz.html",
+      "ck/fuddbh.html"
+    ]
+  },
+  "ck/gysXz.html": {
+    "resources": [
+      "images/shuijiao.jpg",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "ck/fgysxz.html": {
+    "resources": [
+      "images/shuijiao.jpg",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "ck/khAdd.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "js/mui.min.js",
+      "js/mui.poppicker.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/city.data.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/city.data-3.js",
+      "js/config.js",
+      "css/common_imgup.css",
+      "img/a11.png",
+      "css/index_imgup.css",
+      "js/imgUp.js",
+      "css/index.css",
+      "css/commons.css",
+      "img/a7.png",
+      "img/loading.gif",
+      "ck/khAdd.html"
+    ],
+    "refer": [
+      "ck/khAdd.html",
+      "ck/bddt.html",
+      "ck/ddtt.html"
+    ]
+  },
+  "ck/khList.html": {
+    "resources": [
+      "js/config.js",
+      "images/shuijiao.jpg",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/a11.png"
+    ],
+    "refer": [
+      "ck/khxq.html"
+    ]
+  },
+  "ck/dingHList.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "ck/dHList.html": {
+    "resources": [
+      "ck/dingHList.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "ck/dingHList.html"
+    ]
+  },
+  "ck/text.html": {
+    "resources": [
+      "ck/rkGoods.html"
+    ],
+    "refer": [
+      "ck/rkGoods.html"
+    ]
+  },
+  "ck/ddtt.html": {
+    "resources": [
+      "ck/bddt.html",
+      "fonts/mui.ttf",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "ck/bddt.html"
+    ]
+  },
+  "ck/bddt.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/mui.min.js"
+    ],
+    "refer": []
+  },
+  "ck/jdFrom.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "fonts/mui.ttf",
+      "js/city.data.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/city.data-3.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/config.js",
+      "images/cbd.jpg"
+    ],
+    "refer": [
+      "ck/khxz.html"
+    ]
+  },
+  "ck/dkjlMain.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "ck/dkjl.html",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "ck/dkjl.html"
+    ]
+  },
+  "ck/dkjl.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "loginTest.html": {
+    "resources": [
+      "images/Layer-3.png",
+      "images/xian.png",
+      "images/\u0018|ýý\u000f\u000eý.png",
+      "images/\u0018|ýý\u000f\u000eý.png",
+      "css/bootstrap.min.css",
+      "images/shuijiao.jpg",
+      "images/ybsp.png",
+      "js/mui.min.js",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "ck/rkxq.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "ck/ycxq.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css"
+    ],
+    "refer": []
+  },
+  "ck/khxq.html": {
+    "resources": [
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "ck/ddxq.html": {
+    "resources": [
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/config.js"
+    ],
+    "refer": []
+  },
+  "ck/ssssssss.html": {
+    "resources": [
+      "css/mui.min.css"
+    ],
+    "refer": []
   }
 }

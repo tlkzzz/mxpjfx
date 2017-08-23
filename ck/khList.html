@@ -112,16 +112,26 @@
 			
 			function li_html(data){
 			var a =
-			'<a href="javascript:;">'+
-            '<img class="mui-media-object mui-pull-left" src="../images/shuijiao.jpg">'+
-            '<div class="mui-media-body">'+
+			'<div onclick="sc('+' \' ' +data.id+' \' '+' )">'+
+            '<img style="width:50px ;height: 80px;" class="mui-media-object mui-pull-left" src="'+data.mdtp+'">'+
+            '<div class="mui-media-body">店名：'+
                data.dpmc+
                  '<p class="mui-ellipsis">客户：'+data.khjc+'</p>'+
                 '<p class="mui-ellipsis">位置：'+data.dz+'</p>'+
                    '<p class="mui-ellipsis">电话：'+data.phone+'</p>'+
             '</div>'+
-        '</a>'
+        '</div>'
 			     return a;
+			}
+			function sc(ss){
+				console.log(ss);
+			mui.openWindow({ 
+      					url:'khxq.html',//子页面HTML地址，支持本地地址和网络地址
+      					id:'khxq.html',//子页面标志
+      					extras: {//extras里面的就是参数了
+                        entrance: ss
+                    },
+      			});
 			}
 </script>
 </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>商品入库</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" >
+			<a   class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">客户详情</h1>
+		</header>
+			<div class="carddiv"  style="margin-top: 50px;"></div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/config.js"></script>
+		
+	<script type="text/javascript">
+		mui.init({
+		});
+		if (mui.os.plus) {
+			mui.plusReady(function(){
+				var wv = plus.webview.currentWebview();
+				var ids=wv.entrance;
+				mui.get(XPJFX_URL+'m/mStore/khxq',{ids:ids},function(data){
+				addv(data);
+				});
+			})
+		}
+		
+		function  addv (data){
+							var table = document.body.querySelector('.carddiv');
+					var dc=	document.createElement('div');
+					dc.className="mui-card";
+					dc.innerHTML='<div class="mui-card-content" >'+
+					'<div class="mui-card-content-inner">'+
+					 '<p><span>图片:  </span><img src="'+data[0].mdtp+'"></p>'+
+						'<p><span>店名:  </span><span style="color: #333;">'+data[0].dpmc+'</span></p>'+
+						'<p><span>客户 :  </span><span style="color: #333;">'+data[0].khjc+'</span></p>'+
+						'<p><span>联系人:  </span><span style="color: #333;">'+data[0].lxr+'</span></p>'+
+						'<p><span>地址 :  </span><span style="color: #333;">'+data[0].dz+'</span></p>'+
+						'<p><span>邮编 :  </span><span style="color: #333;">'+data[0].yb+'</span></p>'+
+						'<p><span>电话:  </span><span style="color: #333;">'+data[0].dh+'</span></p>'+
+						'<p><span>手机:  </span><span style="color: #333;">'+data[0].phone+'</span></p>'+
+					'<p><span>开户行:  </span><span style="color: #333;">'+data[0].khh+'</span></p>'+
+					'<p><span>开户行账户:  </span><span style="color: #333;">'+data[0].khhzh+'</span></p>'+
+					'<p><span>开户人:  </span><span style="color: #333;">'+data[0].khr+'</span></p>'+
+						'<p><span>营业执照:  </span><span style="color: #333;">'+data[0].yyzz+'</span></p>'+
+							'<p><span>经度:  </span><span style="color: #333;">'+data[0].jd+'</span></p>'+
+								'<p><span>纬度:  </span><span style="color: #333;">'+data[0].wd+'</span></p>'+
+									
+				'</div>'+
+				  '</div>';
+					table.appendChild(dc);
+			}
+	</script>
+</html>

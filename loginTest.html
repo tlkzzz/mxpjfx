@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+		.container-fluid{
+			background-size: cover;
+			background-position: center;
+			background-image: url(images/Layer-3.png);
+			position: fixed;
+			height: 100%;
+		}
+		.row{
+			background-size: cover;
+			background-position: center;
+			background-color: rgba(255,255,255,0.2);
+			height: 100%;
+		}
+		.heard{
+			font-size: 30px;
+			color: #fff;
+			text-align: center;
+			padding: 4%;
+			margin-top: 2%;
+			box-sizing: border-box;
+		}
+		.logo{
+			margin: 0 auto;
+			width: 50%;
+			box-sizing: border-box;
+		}
+		.logo img{
+			width: 100%;
+			height: auto;
+			margin: 0 auto;
+			display: block;
+		}
+		/*新平江分销平台*/
+		.center{
+			width: 90%;
+			margin: 0 auto;
+			box-sizing: border-box;
+		}
+		.row4{
+			margin: 0 auto;
+			color: #fff;
+		}
+		.row4 div{
+			width: 33.33333%;
+			float: left;
+			text-align: center;
+		}
+		.row4 img{
+			width: 80%;
+			height: 2px;
+			background-color: #fff;
+		}
+		/*输入区*/
+		.box{
+			width: 75%;
+			margin: 14% auto;
+			background-color: rgba(255,255,255,0.4);
+			border-radius: 8px;
+			padding: 8%;
+			box-sizing: border-box;
+		}
+		.text{
+			width: 100%;
+			padding:4% 2%;
+			box-sizing: border-box;
+			border: 0px;
+			border-radius: 4px;
+			color: #999;
+			margin-bottom: 4%;
+		}
+		.buttom{
+			background-color: #f29438;
+			width: 100%;
+			padding:3% 2%;
+			box-sizing: border-box;
+			border: 0px;
+			border-radius: 4px;
+			font-size: 20px;
+			color: #fff;
+			margin-top: 4%;
+		}
+	</style>
+  </head>
+
+<body>
+<div class="container-fluid">
+  <div class="row">
+  	<div class="logo"><img src="images/ybsp.png"></div>
+  	<!--新平江分销平台-->
+  	<div class="center">
+  		<article class="row4">
+            <div><img src="images/xian.png"></div>
+            <div>新平江分销平台</div>
+            <div><img src="images/xian.png"></div>
+        </article>
+        <div class="clearfix"></div>
+  	</div>
+  	<!--输入区-->
+  	<div class="box">
+  		<input class="text" type="text" id="user" placeholder="请输入账号" value="admin">
+  		<input class="text" type="password" id="pass" placeholder="请输入密码" value="admin">
+  		<input class="buttom" type="button" value="登录" id="login">
+  	</div>
+  </div>
+</div>
+<script src="js/mui.min.js"></script>
+		<script src="js/config.js"></script>
+		<!--<script src="js/mui.enterfocus.js"></script>-->
+		<!--<script src="js/app.js"></script>-->
+		<script>
+			(function($, doc) {
+				$.init({
+					statusBarBackground: '#f7f7f7'
+				});
+				
+				if(mui.os.plus){
+								$.plusReady(function() {
+//						$.ready(function() {
+						doc.getElementById('login').addEventListener('tap', function() {
+							var user = doc.getElementById('user').value;
+							var pass = doc.getElementById('pass').value;
+							if(user.length==0 || user ==''){
+								$.toast('请输入账号');
+								return false;
+							}
+							if(pass.length==0 || pass==''){
+								$.toast('请输入密码');
+								return false;
+							}
+				 $.post(XPJFX_URL+'m/mLogin/login',{user:user,pass:pass},function(data){
+				 	console.log(data);
+				 	if(data){
+								//打开新页面
+						$.openWindow({
+						    url:'main.html',
+						    id:'main.html',
+						 });
+				 	}else{
+						$.toast('用户名或密码错误');
+								return false;
+						}
+					},'json'
+				);
+						
+					});
+					//返回退出
+					var backButtonPress = 0;
+					$.back = function(event) {
+						backButtonPress++;
+						if (backButtonPress > 1) {
+							plus.runtime.quit();
+						} else {
+							plus.nativeUI.toast('再按一次退出应用');
+						}
+						setTimeout(function() {
+							backButtonPress = 0;
+						}, 1000);
+						return false;
+					};
+				});	
+				}else{
+						$.ready(function() {
+						doc.getElementById('login').addEventListener('tap', function() {
+							var user = doc.getElementById('user').value;
+							var pass = doc.getElementById('pass').value;
+//							if(user.length==0 || user ==''){
+//								$.toast('请输入账号');
+//								return false;
+//							}
+//							if(pass.length==0 || pass==''){
+//								$.toast('请输入密码');
+//								return false;
+//							}
+
+//				 $.get('http://xpjfx.ngrok.cc/a/m/sys/user/infoData',function(data){
+//						console.log(data)
+//					},'json'
+//				);
+//						
+						//打开新页面
+						$.openWindow({
+						    url:'main.html',
+						    id:'main.html',
+						 });
+});
+				});	
+				}
+
+			}(mui, document));
+		</script>
+</body>
+</html>

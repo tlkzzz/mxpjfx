@@ -246,17 +246,45 @@
 				document.getElementById('Save').addEventListener('tap', function(event) {
 					var mdtp=document.getElementById('ddddd').src;
 					console.log(mdtp);
+					if(mdtp==undefined || mdtp==''){
+						mui.toast('请选择图片');
+						return false;
+					}
 					var khfl=document.getElementById('khfl').TEXT;
-//					if(khfl==undefined || khfl==''){
-//						mui.toast('请选择客户分类');
-//						return false;
-//					}
+					if(khfl==undefined || khfl==''){
+						mui.toast('请选择客户分类');
+						return false;
+					}
 					var qy=document.getElementById('showCityPicker3').value;
+					if(qy==undefined || qy==''){
+						mui.toast('请选择区域');
+						return false;
+					}
 					var xxdz=document.getElementById('xxdz').value;
+					if(xxdz==undefined || xxdz==''){
+						mui.toast('请填写地址');
+						return false;
+					}
 					var cgy=document.getElementById('cgy').value;
+					if(cgy==undefined || cgy==''){
+						mui.toast('请填写采购员');
+						return false;
+					}
 					var dpmc=document.getElementById('dpmc').value;
+					if(dpmc==undefined || dpmc==''){
+						mui.toast('请填写店铺名称');
+						return false;
+					}
 					var khmc=document.getElementById('khmc').value;
+					if(khmc==undefined || khmc==''){
+						mui.toast('请填写客户名称');
+						return false;
+					}
 					var sjhm=document.getElementById('sjhm').value;
+					if(sjhm==undefined || sjhm==''){
+						mui.toast('请填写手机号码');
+						return false;
+					}
 					var cgylxfs=document.getElementById('cgylxfs').value;
 					var yb=document.getElementById('yb').value;
 					var wx=document.getElementById('wx').value;
@@ -272,7 +300,15 @@
 					var khhzh=document.getElementById('khhzh').value;
 					var khr=document.getElementById('khr').value;
 					var jd=document.getElementById('jd').value;
+					if(jd==undefined || jd==''){
+						mui.toast('请选择经度');
+						return false;
+					}
 					var wd=document.getElementById('wd').value;
+					if(wd==undefined || wd==''){
+						mui.toast('请选择纬度');
+						return false;
+					}
 					mui.get(XPJFX_URL+'m/mStore/save',{mdtp:mdtp,khfl:khfl,qy:qy,xxdz:xxdz,
 					cgy:cgy,dpmc:dpmc,khmc:khmc,sjhm:sjhm,cgylxfs:cgylxfs,yb:yb,wx:wx,qq:qq,
 					hzzq:hzzq,ed:ed,xsqd:xsqd,jhqd:jhqd,dh:dh,dzyj:dzyj,jfxs:jfxs,khhmc:khhmc,khhzh:khhzh,khr:khr,jd:jd,wd:wd
